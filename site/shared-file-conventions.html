@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Shared-File Conventions - The Multi-Agent Teams Guide</title>
+<meta name="description" content="A plain-English manual on running several AI agents together like a tiny staff. Education only, no code required.">
+<style>
+:root {
+  --bg: #fbf7f0; --paper: #ffffff; --ink: #3a3a3a; --soft: #6b5d4f;
+  --teal: #2a7f8f; --rust: #b58a4a; --violet: #5c6bb0; --line: #e4dccb;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; background: var(--bg); color: var(--ink);
+  font-family: "Trebuchet MS", Verdana, system-ui, sans-serif;
+  line-height: 1.65; font-size: 17px;
+}
+header.site {
+  background: #f2e9da; border-bottom: 3px solid #d8c7a8; padding: 1rem 1.25rem 0.6rem;
+}
+.site-title { font-size: 1.35rem; font-weight: bold; color: var(--soft); text-decoration: none; }
+.site-title span { color: var(--teal); }
+nav.menu { margin-top: 0.6rem; display: flex; flex-wrap: wrap; gap: 0.25rem 0.9rem; font-size: 0.85rem; }
+nav.menu a { color: var(--soft); text-decoration: none; padding: 0.12rem 0.4rem; border-radius: 6px; }
+nav.menu a:hover { background: #e8dcc3; }
+nav.menu a.current { background: var(--teal); color: #fff; }
+main { max-width: 820px; margin: 0 auto; padding: 1.5rem 1.25rem 3rem; background: var(--paper); min-height: 55vh; border-left: 1px solid var(--line); border-right: 1px solid var(--line); }
+h1 { font-size: 1.9rem; color: var(--soft); margin: 0.2em 0 0.4em; }
+h2 { color: #1f5f6a; margin-top: 2.1em; border-bottom: 2px solid var(--line); padding-bottom: 0.15em; }
+h3 { color: var(--rust); }
+a { color: #1f6ab0; }
+code { background: #f3ede0; padding: 0.08em 0.35em; border-radius: 5px; font-size: 0.9em; }
+pre { background: #2f2a24; color: #f3ede0; padding: 1rem; border-radius: 10px; overflow-x: auto; line-height: 1.5; }
+pre code { background: none; color: inherit; padding: 0; font-size: 0.85rem; }
+blockquote { background: #fdf6e3; border-left: 5px solid var(--rust); margin: 1rem 0; padding: 0.5rem 1rem; border-radius: 0 8px 8px 0; }
+table { border-collapse: collapse; width: 100%; margin: 1rem 0; font-size: 0.92em; }
+th, td { border: 1px solid var(--line); padding: 0.45rem 0.6rem; text-align: left; }
+th { background: #f2e9da; color: var(--soft); }
+figure { margin: 1.5rem 0; text-align: center; }
+figure img { max-width: 100%; height: auto; border: 1px solid var(--line); border-radius: 10px; background: #fff; }
+figcaption { font-size: 0.82rem; color: var(--soft); margin-top: 0.4rem; }
+.disclaimer { background: #fdf3d7; border: 1px dashed var(--rust); border-radius: 10px; padding: 0.6rem 1rem; font-size: 0.85rem; color: var(--soft); }
+footer.site { text-align: center; color: var(--soft); font-size: 0.8rem; padding: 1.5rem 1rem 2.5rem; }
+.nav-arrows { display: flex; justify-content: space-between; margin-top: 2.5rem; padding-top: 1rem; border-top: 2px solid var(--line); font-size: 0.9rem; }
+.onpage { font-size: 0.8rem; color: var(--soft); background: #f6f0e3; border-radius: 8px; padding: 0.55rem 0.9rem; }
+.onpage strong { color: #1f5f6a; }
+
+</style>
+</head>
+<body>
+<header class="site">
+  <a class="site-title" href="index.html">The Multi-Agent <span>Teams</span> Guide</a>
+  <nav class="menu">
+    <a href="about.html" class="">About This Guide</a>
+    <a href="when-a-team-beats-one-agent.html" class="">When a Team Beats One Agent</a>
+    <a href="roles-and-handoffs.html" class="">Roles and Handoffs</a>
+    <a href="shared-file-conventions.html" class="current">Shared-File Conventions</a>
+    <a href="spotting-confusion-loops.html" class="">Spotting Confusion Loops</a>
+    <a href="project-a-ebay-listing-team.html" class="">Project A - eBay Listing Team</a>
+    <a href="project-b-book-launch-team.html" class="">Project B - Book-Launch Team</a>
+    <a href="project-c-household-paperwork-team.html" class="">Project C - Household Paperwork Team</a>
+    <a href="free-tools-and-next-steps.html" class="">Free Tools and Next Steps</a>
+  </nav>
+</header>
+<main>
+<p class="onpage"><strong>On this page:</strong> <a href="#everything-the-team-knows-lives-in-files">Everything the team knows lives in files</a> - <a href="#a-starter-floor-plan">A starter floor plan</a> - <a href="#file-naming-the-three-part-habit">File naming: the three-part habit</a> - <a href="#one-writer-per-file-in-practice">One writer per file, in practice</a> - <a href="#status-markers-inside-files">Status markers inside files</a> - <a href="#the-log-one-line-per-event">The log: one line per event</a> - <a href="#the-decision-log-for-anything-worth-an-argument">The decision log (for anything worth an argument)</a> - <a href="#the-floor-plan-drawn">The floor plan, drawn</a> - <a href="#what-not-to-store">What NOT to store</a> - <a href="#recap-card">Recap card</a></p>
+<h1>Shared-File Conventions</h1>
+<p>The folder is the office. Give it a floor plan.</p>
+<h2 id="everything-the-team-knows-lives-in-files">Everything the team knows lives in files</h2>
+<p>Agents have no lasting memory between conversations. Your folder is the only shared brain. If an instruction, fact, or decision is not written down in the folder, it does not exist — no matter how sure you felt when you said it out loud.</p>
+<p>So treat the folder like a real small-business filing system: boring, obvious, and impossible to misread. Boring is a feature.</p>
+<h2 id="a-starter-floor-plan">A starter floor plan</h2>
+<p>Every project folder in this book uses the same layout:</p>
+<pre><code>project-folder/
+  kickoff.md          &lt;- the brief: goal, roster, definition of done
+  log.md              &lt;- one line per event, newest at the top
+  notes/              &lt;- memos between agents (handoffs live here)
+  facts/              &lt;- raw research, one file per item
+  drafts/             &lt;- work in progress, one file per deliverable
+  final/              &lt;- approved outputs only
+  archive/            &lt;- anything superseded, don't delete, don't read again</code></pre>
+<p>Seven names, memorized in one read. Two rules glue it together: <strong>facts only in facts/</strong>, <strong>finished only in final/</strong>. Most "the team is confused" moments happen because a draft wandered into the wrong room and someone cited it.</p>
+<h2 id="file-naming-the-three-part-habit">File naming: the three-part habit</h2>
+<p>Name every working file <code>who-what-when</code> — or at minimum keep these three habits:</p>
+<ul>
+<li><strong>Date first, in a sorting order that works:</strong> <code>2026-03-01</code> sorts correctly everywhere, unlike <code>March 1st</code> or <code>0301</code>.</li>
+<li><strong>One thing per file:</strong> <code>pedal-02-facts.md</code>, never <code>research-stuff.md</code>. When a file needs "stuff" in the name, it needs to be three files.</li>
+<li><strong>Status in the name when it matters:</strong> <code>pedal-02-listing-DRAFT.md</code> vs <code>pedal-02-listing-FINAL.md</code> — when the wrong copy being picked up would be costly, put the status right there rather than inside the file.</li>
+</ul>
+<p>Keep names lowercase, use dashes not spaces, and never retype a name — copy the last one and edit it, so versions stay beside their relatives.</p>
+<h2 id="one-writer-per-file-in-practice">One writer per file, in practice</h2>
+<p>The rule from the roles chapter becomes mechanical here:</p>
+<ul>
+<li>The Researcher edits files in <code>facts/</code>.</li>
+<li>The Writer edits files in <code>drafts/</code>.</li>
+<li>The Checker writes memos in <code>notes/</code> — bounces a review, never edits a draft directly.</li>
+<li>You (and only you) edit <code>kickoff.md</code> and move files into <code>final/</code>.</li>
+</ul>
+<p>Nobody "helpfully tidies" someone else's room. If the Writer thinks a fact sheet is wrong, the Writer writes a note in <code>notes/questions-to-researcher.md</code>; the Researcher answers there. This slightly slower loop is what keeps the team from arguing with itself in the same file.</p>
+<h2 id="status-markers-inside-files">Status markers inside files</h2>
+<p>Open a shared file and its first line should be honest:</p>
+<ul>
+<li><code>STATUS: DRAFT — writer, safe to edit</code></li>
+<li><code>STATUS: REVIEW — checker, please look</code></li>
+<li><code>STATUS: APPROVED — boss approved, move to final/</code></li>
+<li><code>STATUS: QUESTION — parked, see note at the bottom</code></li>
+</ul>
+<p>When an agent finishes, it flips the status. When you approve, you flip it again. It sounds silly-simple and it works, because it gives every conversation — even a fresh one with zero memory — an instant answer to "what's the story with this file?"</p>
+<h2 id="the-log-one-line-per-event">The log: one line per event</h2>
+<p><code>log.md</code> is a team diary where each event is a single dated line, newest first:</p>
+<pre><code>2026-03-01 14:20 BOSS  kickoff approved, team started
+2026-03-01 14:35 RESEARCHER  fact sheets 1,2,4 done; 3,5 need source check
+2026-03-01 14:41 WRITER  left question about pedal-03 weight in notes/
+2026-03-01 14:50 CHECKER  bounced pedal-02 list: claims weight "450g", facts say "unstated"</code></pre>
+<p>Why a log? Because when something smells wrong later, the log is the X-ray. You can see who wrote what when, with almost zero effort. Tell each agent: <em>append one line here whenever you finish a task.</em> Agents are excellent at this discipline; you will be grateful you had them do it.</p>
+<h2 id="the-decision-log-for-anything-worth-an-argument">The decision log (for anything worth an argument)</h2>
+<p>Bigger or riskier calls (price changes, policies, anything involving money or other people) get a second, shorter file: <code>notes/decisions.md</code>, with one entry per decision:</p>
+<ul>
+<li><strong>Date and boss:</strong> 2026-03-01, BOSS.</li>
+<li><strong>Decision:</strong> reserve pedals at $89, not $79.</li>
+<li><strong>Because:</strong> comps averaged $92, three sat unsold at $79 on a rival shelf.</li>
+</ul>
+<p>You never need to re-litigate an old choice or remember why; agents that read the file stop re-suggesting the abandoned idea every conversation.</p>
+<h2 id="the-floor-plan-drawn">The floor plan, drawn</h2>
+<figure><img src="diagrams/shared-files.svg" alt="Diagram: a file tree with kickoff.md and log.md at the top, plus folders notes, facts, drafts, final, archive; arrows show drafts flowing from drafts to final only after a checker memo." loading="lazy"><figcaption>Diagram: a file tree with kickoff.md and log.md at the top, plus folders notes, facts, drafts, final, archive; arrows show drafts flowing from drafts to final only after a checker memo.</figcaption></figure>
+<h2 id="what-not-to-store">What NOT to store</h2>
+<ul>
+<li>Passwords, account numbers, real IDs, or patient details — nowhere, ever.</li>
+<li>Your clients' or family members' personal data — use initials or fictional stand-ins while learning.</li>
+<li>Anything you would not hand to a stranger holding a photo of it — one day you might publish this folder as a template; keep it publishable from day one.</li>
+</ul>
+<h2 id="recap-card">Recap card</h2>
+<ul>
+<li>Folder = shared brain; if it isn't in the folder, it isn't real.</li>
+<li>Standard rooms: kickoff, log, notes, facts, drafts, final, archive.</li>
+<li>Name files <code>date-thing-status</code>; one thing per file.</li>
+<li>One writer per file; everyone else leaves notes.</li>
+<li>Flip status lines; keep a one-line-per-event log; log decisions that matter.</li>
+</ul>
+<div class="nav-arrows">
+  <a href="roles-and-handoffs.html">← Roles and Handoffs</a>
+  <a href="spotting-confusion-loops.html">Spotting Confusion Loops →</a>
+</div>
+</main>
+<footer class="site">
+  <p>The Multi-Agent Teams Guide - plain-English orchestration basics, complements the Agents-and-MCP Handbook.</p>
+  <p>Educational only - not medical, legal, tax, or financial advice. MIT licensed.</p>
+  <p>Copyright (c) 2026 Asdale Dynamics, LLC</p>
+</footer>
+</body>
+</html>

@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Roles and Handoffs - The Multi-Agent Teams Guide</title>
+<meta name="description" content="A plain-English manual on running several AI agents together like a tiny staff. Education only, no code required.">
+<style>
+:root {
+  --bg: #fbf7f0; --paper: #ffffff; --ink: #3a3a3a; --soft: #6b5d4f;
+  --teal: #2a7f8f; --rust: #b58a4a; --violet: #5c6bb0; --line: #e4dccb;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; background: var(--bg); color: var(--ink);
+  font-family: "Trebuchet MS", Verdana, system-ui, sans-serif;
+  line-height: 1.65; font-size: 17px;
+}
+header.site {
+  background: #f2e9da; border-bottom: 3px solid #d8c7a8; padding: 1rem 1.25rem 0.6rem;
+}
+.site-title { font-size: 1.35rem; font-weight: bold; color: var(--soft); text-decoration: none; }
+.site-title span { color: var(--teal); }
+nav.menu { margin-top: 0.6rem; display: flex; flex-wrap: wrap; gap: 0.25rem 0.9rem; font-size: 0.85rem; }
+nav.menu a { color: var(--soft); text-decoration: none; padding: 0.12rem 0.4rem; border-radius: 6px; }
+nav.menu a:hover { background: #e8dcc3; }
+nav.menu a.current { background: var(--teal); color: #fff; }
+main { max-width: 820px; margin: 0 auto; padding: 1.5rem 1.25rem 3rem; background: var(--paper); min-height: 55vh; border-left: 1px solid var(--line); border-right: 1px solid var(--line); }
+h1 { font-size: 1.9rem; color: var(--soft); margin: 0.2em 0 0.4em; }
+h2 { color: #1f5f6a; margin-top: 2.1em; border-bottom: 2px solid var(--line); padding-bottom: 0.15em; }
+h3 { color: var(--rust); }
+a { color: #1f6ab0; }
+code { background: #f3ede0; padding: 0.08em 0.35em; border-radius: 5px; font-size: 0.9em; }
+pre { background: #2f2a24; color: #f3ede0; padding: 1rem; border-radius: 10px; overflow-x: auto; line-height: 1.5; }
+pre code { background: none; color: inherit; padding: 0; font-size: 0.85rem; }
+blockquote { background: #fdf6e3; border-left: 5px solid var(--rust); margin: 1rem 0; padding: 0.5rem 1rem; border-radius: 0 8px 8px 0; }
+table { border-collapse: collapse; width: 100%; margin: 1rem 0; font-size: 0.92em; }
+th, td { border: 1px solid var(--line); padding: 0.45rem 0.6rem; text-align: left; }
+th { background: #f2e9da; color: var(--soft); }
+figure { margin: 1.5rem 0; text-align: center; }
+figure img { max-width: 100%; height: auto; border: 1px solid var(--line); border-radius: 10px; background: #fff; }
+figcaption { font-size: 0.82rem; color: var(--soft); margin-top: 0.4rem; }
+.disclaimer { background: #fdf3d7; border: 1px dashed var(--rust); border-radius: 10px; padding: 0.6rem 1rem; font-size: 0.85rem; color: var(--soft); }
+footer.site { text-align: center; color: var(--soft); font-size: 0.8rem; padding: 1.5rem 1rem 2.5rem; }
+.nav-arrows { display: flex; justify-content: space-between; margin-top: 2.5rem; padding-top: 1rem; border-top: 2px solid var(--line); font-size: 0.9rem; }
+.onpage { font-size: 0.8rem; color: var(--soft); background: #f6f0e3; border-radius: 8px; padding: 0.55rem 0.9rem; }
+.onpage strong { color: #1f5f6a; }
+
+</style>
+</head>
+<body>
+<header class="site">
+  <a class="site-title" href="index.html">The Multi-Agent <span>Teams</span> Guide</a>
+  <nav class="menu">
+    <a href="about.html" class="">About This Guide</a>
+    <a href="when-a-team-beats-one-agent.html" class="">When a Team Beats One Agent</a>
+    <a href="roles-and-handoffs.html" class="current">Roles and Handoffs</a>
+    <a href="shared-file-conventions.html" class="">Shared-File Conventions</a>
+    <a href="spotting-confusion-loops.html" class="">Spotting Confusion Loops</a>
+    <a href="project-a-ebay-listing-team.html" class="">Project A - eBay Listing Team</a>
+    <a href="project-b-book-launch-team.html" class="">Project B - Book-Launch Team</a>
+    <a href="project-c-household-paperwork-team.html" class="">Project C - Household Paperwork Team</a>
+    <a href="free-tools-and-next-steps.html" class="">Free Tools and Next Steps</a>
+  </nav>
+</header>
+<main>
+<p class="onpage"><strong>On this page:</strong> <a href="#the-one-job-rule">The one-job rule</a> - <a href="#the-standard-roster">The standard roster</a> - <a href="#why-roles-must-own-a-file">Why roles must "own a file"</a> - <a href="#the-handoff-memo">The handoff memo</a> - <a href="#handoffs-between-agent-types">Handoffs between agent types</a> - <a href="#kickoff-the-first-memo-written-by-you">Kickoff: the first memo, written by you</a> - <a href="#the-baton-diagram">The baton diagram</a> - <a href="#common-beginner-mistakes">Common beginner mistakes</a> - <a href="#recap-card">Recap card</a></p>
+<h1>Roles and Handoffs</h1>
+<p>One job each, and a proper note when the baton changes hands.</p>
+<h2 id="the-one-job-rule">The one-job rule</h2>
+<p>Every agent gets <strong>one role, one input, one output</strong>. Not one <em>goal</em> — one <em>role</em>. "Help with the book launch" is a goal. "Write three social-media post drafts from the fact sheet" is a role. The tighter you define the role, the less your agents wander and the less you chase them.</p>
+<p>A useful job description fits the top of a single index card:</p>
+<ul>
+<li><strong>Who am I?</strong> (the checker. fresh eyes, skeptical.)</li>
+<li><strong>What do I receive?</strong> (draft files in the drafts folder)</li>
+<li><strong>What do I produce?</strong> (a review memo: approved, or a punch-list of fixes)</li>
+<li><strong>What do I never do?</strong> (I do not rewrite the draft myself)</li>
+</ul>
+<p>That last line matters more than beginners expect. The checker that "helpfully rewrites" destroys the one thing it exists to provide: an outside opinion.</p>
+<h2 id="the-standard-roster">The standard roster</h2>
+<table>
+<thead>
+<tr>
+<th>Role</th>
+<th>One-line job</th>
+<th>Typical output</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Planner</td>
+<td>Split the goal into small jobs; write the kickoff memo</td>
+<td>kickoff.md</td>
+</tr>
+<tr>
+<td>Researcher</td>
+<td>Collect facts, only facts, from named sources</td>
+<td>fact sheets</td>
+</tr>
+<tr>
+<td>Writer</td>
+<td>Turn fact sheets into polished drafts</td>
+<td>draft files</td>
+</tr>
+<tr>
+<td>Checker</td>
+<td>Compare drafts against facts; approve or bounce back</td>
+<td>review memo</td>
+</tr>
+<tr>
+<td>Recorder</td>
+<td>Keep the log of who did what and what was decided</td>
+<td>log.md</td>
+</tr>
+</tbody>
+</table>
+<p>You will rarely need all five. Most projects in this book use three: one Planner, one or two Workers, one Checker. The Recorder role is just an agent who keeps a tidy log — a real timesaver on jobs that run more than a day.</p>
+<h2 id="why-roles-must-own-a-file">Why roles must "own a file"</h2>
+<p>In a real office, a person owns a desk, a drawer, a specific report. Agents work the same way: a role is not fully defined until it owns a particular file. The Researcher owns the fact sheet. The Writer owns the draft. Nobody else edits those files — they leave notes instead. This rule, called <strong>one writer per file</strong>, prevents the classic disaster of two agents "improving" the same draft at the same time until it contradicts itself. It is covered hands-on in the next chapter.</p>
+<h2 id="the-handoff-memo">The handoff memo</h2>
+<p>A handoff is not "here, take the folder." A handoff is a short note with three sections. Copy this shape every single time:</p>
+<ul>
+<li><strong>Done</strong> — what I did, in two sentences, with file names.</li>
+<li><strong>Next</strong> — what you are asked to do with it, in one sentence.</li>
+<li><strong>Watch out</strong> — anything uncertain, missing, or of which you are suspicious.</li>
+</ul>
+<p>Here is a real-shaped example from a later project:</p>
+<ul>
+<li><strong>Done:</strong> Researched all five guitar pedals (fact sheets in <code>facts/pedal-01.md</code> through <code>facts/pedal-05.md</code>). Three have verifiable specs from manufacturer pages; two do not.</li>
+<li><strong>Next:</strong> Writer, draft eBay listings for all five, one per file, using only the fact-sheet fields.</li>
+<li><strong>Watch out:</strong> Pedals 2 and 4 have no listed weights. Mark unknown as "not stated," do not guess.</li>
+</ul>
+<p>Notice what the memo does <em>not</em> contain: small talk, history, or the researcher's feelings. Past conversation never rides along; only the note does. That is deliberate. Agents cannot remember your last chat anyway — the memo is the team's working memory.</p>
+<h2 id="handoffs-between-agent-types">Handoffs between agent types</h2>
+<p>The shape above works no matter what tools you use to "hire" agents:</p>
+<ul>
+<li><strong>Web chats:</strong> open a chat per role. Paste the handoff memo as the first message, together with the file contents. It feels manual because it is — and that is fine, because you stay the boss.</li>
+<li><strong>Agentic coding tools</strong> (opencode, Claude Code, Copilot-style assistants): many can define subagents with roles, so the same memo becomes the role description plus a task message.</li>
+<li><strong>MCP-connected agents</strong> (see the companion handbook): the agents can read the shared folder themselves; your memo only needs to name the files.</li>
+</ul>
+<h2 id="kickoff-the-first-memo-written-by-you">Kickoff: the first memo, written by you</h2>
+<p>Before any agent does anything, <em>you</em> write the kickoff — or have your Planner agent draft it for your approval. Keep it to five lines:</p>
+<ul>
+<li><strong>Goal:</strong> one sentence, plain.</li>
+<li><strong>Definition of done:</strong> what existence of success looks like (e.g., "five listings, each checked against its fact sheet, my thumbs-up").</li>
+<li><strong>Roster:</strong> names of the roles and who fills them (chat window 2 = researcher, etc.).</li>
+<li><strong>Folder:</strong> where the shared files live.</li>
+<li><strong>Rule of the house:</strong> one writer per file; checkers never rewrite; when in doubt, stop and write a note to the boss (you).</li>
+</ul>
+<p>The "when in doubt, stop and note the boss" line is your steering wheel. Teams never guess silently: they stop and annotate. Reward that behavior by reading and answering the notes.</p>
+<h2 id="the-baton-diagram">The baton diagram</h2>
+<figure><img src="diagrams/roles-handoffs.svg" alt="Diagram: a pipeline of four roles (Planner, Researcher, Writer, Checker) with a handoff memo passing between them; each memo reads Done, Next, Watch out. The human boss stands above, receiving questions." loading="lazy"><figcaption>Diagram: a pipeline of four roles (Planner, Researcher, Writer, Checker) with a handoff memo passing between them; each memo reads Done, Next, Watch out. The human boss stands above, receiving questions.</figcaption></figure>
+<h2 id="common-beginner-mistakes">Common beginner mistakes</h2>
+<ul>
+<li><strong>Rubber-stamping:</strong> skipping review "because it's only a draft." Drafts are where agents plant the errors they expect you to catch later; review the drafts <em>more</em>, not less.</li>
+<li><strong>Role soup:</strong> assigning one agent "plan + research + write + check." Split it, even if it costs you three chat windows.</li>
+<li><strong>Memo amnesia:</strong> forgetting the <em>Watch out</em> section. That section is what saves your weekends; the <em>Done</em> section is flattery you can skim.</li>
+<li><strong>Meeting by voice:</strong> discussing the work verbally with one agent in one conversation, then expecting another agent to "just know it." If it is not in the folder, it did not happen.</li>
+</ul>
+<h2 id="recap-card">Recap card</h2>
+<ul>
+<li>One agent = one role, one input, one output.</li>
+<li>Every role owns a file; only the owner writes it.</li>
+<li>Every handoff = Done / Next / Watch out.</li>
+<li>You are always the boss; agents escalate by stopping and writing you a note.</li>
+</ul>
+<div class="nav-arrows">
+  <a href="when-a-team-beats-one-agent.html">← When a Team Beats One Agent</a>
+  <a href="shared-file-conventions.html">Shared-File Conventions →</a>
+</div>
+</main>
+<footer class="site">
+  <p>The Multi-Agent Teams Guide - plain-English orchestration basics, complements the Agents-and-MCP Handbook.</p>
+  <p>Educational only - not medical, legal, tax, or financial advice. MIT licensed.</p>
+  <p>Copyright (c) 2026 Asdale Dynamics, LLC</p>
+</footer>
+</body>
+</html>

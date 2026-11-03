@@ -1,0 +1,20 @@
+{
+  "pages": [
+    { "file": "00-about-this-guide.md", "slug": "about", "title": "About This Guide" },
+    { "file": "01-when-a-team-beats-one-agent.md", "slug": "when-a-team-beats-one-agent", "title": "When a Team Beats One Agent" },
+    { "file": "02-roles-and-handoffs.md", "slug": "roles-and-handoffs", "title": "Roles and Handoffs" },
+    { "file": "03-shared-file-conventions.md", "slug": "shared-file-conventions", "title": "Shared-File Conventions" },
+    { "file": "04-spotting-confusion-loops.md", "slug": "spotting-confusion-loops", "title": "Spotting Confusion Loops" },
+    { "file": "05-project-a-ebay-listing-team.md", "slug": "project-a-ebay-listing-team", "title": "Project A - eBay Listing Team" },
+    { "file": "06-project-b-book-launch-team.md", "slug": "project-b-book-launch-team", "title": "Project B - Book-Launch Team" },
+    { "file": "07-project-c-household-paperwork-team.md", "slug": "project-c-household-paperwork-team", "title": "Project C - Household Paperwork Team" },
+    { "file": "08-free-tools-and-next-steps.md", "slug": "free-tools-and-next-steps", "title": "Free Tools and Next Steps" }
+  ],
+  "diagrams": [
+    "team-vs-single.svg",
+    "roles-handoffs.svg",
+    "shared-files.svg",
+    "confusion-loop.svg",
+    "project-pipeline.svg"
+  ]
+}

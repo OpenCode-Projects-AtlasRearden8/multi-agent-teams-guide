@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>When a Team Beats One Agent - The Multi-Agent Teams Guide</title>
+<meta name="description" content="A plain-English manual on running several AI agents together like a tiny staff. Education only, no code required.">
+<style>
+:root {
+  --bg: #fbf7f0; --paper: #ffffff; --ink: #3a3a3a; --soft: #6b5d4f;
+  --teal: #2a7f8f; --rust: #b58a4a; --violet: #5c6bb0; --line: #e4dccb;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; background: var(--bg); color: var(--ink);
+  font-family: "Trebuchet MS", Verdana, system-ui, sans-serif;
+  line-height: 1.65; font-size: 17px;
+}
+header.site {
+  background: #f2e9da; border-bottom: 3px solid #d8c7a8; padding: 1rem 1.25rem 0.6rem;
+}
+.site-title { font-size: 1.35rem; font-weight: bold; color: var(--soft); text-decoration: none; }
+.site-title span { color: var(--teal); }
+nav.menu { margin-top: 0.6rem; display: flex; flex-wrap: wrap; gap: 0.25rem 0.9rem; font-size: 0.85rem; }
+nav.menu a { color: var(--soft); text-decoration: none; padding: 0.12rem 0.4rem; border-radius: 6px; }
+nav.menu a:hover { background: #e8dcc3; }
+nav.menu a.current { background: var(--teal); color: #fff; }
+main { max-width: 820px; margin: 0 auto; padding: 1.5rem 1.25rem 3rem; background: var(--paper); min-height: 55vh; border-left: 1px solid var(--line); border-right: 1px solid var(--line); }
+h1 { font-size: 1.9rem; color: var(--soft); margin: 0.2em 0 0.4em; }
+h2 { color: #1f5f6a; margin-top: 2.1em; border-bottom: 2px solid var(--line); padding-bottom: 0.15em; }
+h3 { color: var(--rust); }
+a { color: #1f6ab0; }
+code { background: #f3ede0; padding: 0.08em 0.35em; border-radius: 5px; font-size: 0.9em; }
+pre { background: #2f2a24; color: #f3ede0; padding: 1rem; border-radius: 10px; overflow-x: auto; line-height: 1.5; }
+pre code { background: none; color: inherit; padding: 0; font-size: 0.85rem; }
+blockquote { background: #fdf6e3; border-left: 5px solid var(--rust); margin: 1rem 0; padding: 0.5rem 1rem; border-radius: 0 8px 8px 0; }
+table { border-collapse: collapse; width: 100%; margin: 1rem 0; font-size: 0.92em; }
+th, td { border: 1px solid var(--line); padding: 0.45rem 0.6rem; text-align: left; }
+th { background: #f2e9da; color: var(--soft); }
+figure { margin: 1.5rem 0; text-align: center; }
+figure img { max-width: 100%; height: auto; border: 1px solid var(--line); border-radius: 10px; background: #fff; }
+figcaption { font-size: 0.82rem; color: var(--soft); margin-top: 0.4rem; }
+.disclaimer { background: #fdf3d7; border: 1px dashed var(--rust); border-radius: 10px; padding: 0.6rem 1rem; font-size: 0.85rem; color: var(--soft); }
+footer.site { text-align: center; color: var(--soft); font-size: 0.8rem; padding: 1.5rem 1rem 2.5rem; }
+.nav-arrows { display: flex; justify-content: space-between; margin-top: 2.5rem; padding-top: 1rem; border-top: 2px solid var(--line); font-size: 0.9rem; }
+.onpage { font-size: 0.8rem; color: var(--soft); background: #f6f0e3; border-radius: 8px; padding: 0.55rem 0.9rem; }
+.onpage strong { color: #1f5f6a; }
+
+</style>
+</head>
+<body>
+<header class="site">
+  <a class="site-title" href="index.html">The Multi-Agent <span>Teams</span> Guide</a>
+  <nav class="menu">
+    <a href="about.html" class="">About This Guide</a>
+    <a href="when-a-team-beats-one-agent.html" class="current">When a Team Beats One Agent</a>
+    <a href="roles-and-handoffs.html" class="">Roles and Handoffs</a>
+    <a href="shared-file-conventions.html" class="">Shared-File Conventions</a>
+    <a href="spotting-confusion-loops.html" class="">Spotting Confusion Loops</a>
+    <a href="project-a-ebay-listing-team.html" class="">Project A - eBay Listing Team</a>
+    <a href="project-b-book-launch-team.html" class="">Project B - Book-Launch Team</a>
+    <a href="project-c-household-paperwork-team.html" class="">Project C - Household Paperwork Team</a>
+    <a href="free-tools-and-next-steps.html" class="">Free Tools and Next Steps</a>
+  </nav>
+</header>
+<main>
+<p class="onpage"><strong>On this page:</strong> <a href="#the-honest-answer-first">The honest answer first</a> - <a href="#the-fifteen-second-team-test">The fifteen-second team test</a> - <a href="#why-single-agents-struggle-on-certain-jobs">Why single agents struggle on certain jobs</a> - <a href="#where-teams-shine-and-where-they-dont">Where teams shine (and where they don't)</a> - <a href="#one-diagram-worth-the-whole-chapter">One diagram worth the whole chapter</a> - <a href="#the-formation-we-use-in-this-book-planner-workers-checker">The formation we use in this book: Planner, Workers, Checker</a> - <a href="#a-worked-taste-in-three-sentences">A worked taste, in three sentences</a> - <a href="#recap-card">Recap card</a></p>
+<h1>When a Team Beats One Agent</h1>
+<p>Do you even need a band? Most songs don't.</p>
+<h2 id="the-honest-answer-first">The honest answer first</h2>
+<p>Most tasks need exactly <strong>one</strong> agent. If you can describe the job in one sentence and check the answer in one minute, hire no one. A team adds coordination cost — files to pass, agendas to write, misunderstandings to fix — and coordination is a real expense even when agents work for free.</p>
+<p>So before anything else, take the fifteen-second test below.</p>
+<h2 id="the-fifteen-second-team-test">The fifteen-second team test</h2>
+<p>Answer three questions with yes or no:</p>
+<ol>
+<li><strong>Split?</strong> Can the task be broken into genuinely different jobs (looking things up vs. writing vs. checking)?</li>
+<li><strong>Two eyes?</strong> Would a second, <em>independent</em> opinion catch expensive mistakes before you act on this?</li>
+<li><strong>Too big?</strong> Would one conversation with one agent get so long and tangled that either of you starts forgetting things?</li>
+</ol>
+<ul>
+<li><strong>Zero yeses:</strong> use one agent. Done. You just saved yourself an afternoon.</li>
+<li><strong>One yes:</strong> use one agent with a better workflow (that is what the <em>Agents-and-MCP Handbook</em> teaches).</li>
+<li><strong>Two or three yeses:</strong> this is a team task. Keep reading.</li>
+</ul>
+<h2 id="why-single-agents-struggle-on-certain-jobs">Why single agents struggle on certain jobs</h2>
+<p>Research ten products <em>and</em> write polished copy <em>and</em> proofread your own copy <em>and</em> keep a tidy log — that is what we keep asking one agent to do. Four failure patterns show up again and again.</p>
+<h3>Pattern 1: The overloaded head</h3>
+<p>A long conversation fills up the agent's working memory. Old instructions slide out the back. By message forty, the agent that used to check every eBay policy link now guesses from vibes. Teams fix this not by adding intelligence but by adding <strong>short conversations</strong>: each agent gets a small, fresh window on the task.</p>
+<h3>Pattern 2: The judge-jury-executioner problem</h3>
+<p>An agent that wrote the article is a poor agent to proofread it. It will defend its own sentences. Human writers know this; that is why editors exist, and why agents should have them too. A separate checker agent with a fresh conversation and a grumpy attitude is worth more than any clever prompt on a single agent.</p>
+<h3>Pattern 3: The Swiss Army knife wobble</h3>
+<p>One agent asked to "plan, research, write, and verify" tends to blur the boundaries: the "research" leaks marketing tone, the "plan" reappears in the middle of the "writing." Separate roles force clean seams. Each agent holds one crayon — which sounds limiting, but produces straighter lines.</p>
+<h3>Pattern 4: The stories-on-the-fly problem</h3>
+<p>Long single conversations drift: by the end, the agent is solving a subtly different task than the one you started with. A team re-anchors constantly, because each handoff is a written note that restates the goal.</p>
+<h2 id="where-teams-shine-and-where-they-dont">Where teams shine (and where they don't)</h2>
+<p>Teams shine when:</p>
+<ul>
+<li>The work is a <strong>pipeline</strong>: gather, then draft, then check, then package.</li>
+<li>Quality matters more than speed: you will act on the output (spend money, send an email, publish).</li>
+<li>You want <strong>parallel drafts</strong>: three agents each take a slice (ten products, three chapters, five receipts).</li>
+<li>The task has a natural division: facts vs. words vs. numbers.</li>
+</ul>
+<p>Teams do <em>not</em> help when:</p>
+<ul>
+<li>The task is one brainstorm, one email, one question.</li>
+<li>The output is easy to eyeball and cheap to redo.</li>
+<li>You would spend more time writing handoff memos than doing the work yourself — with one agent, <em>your</em> prompt is often the fastest handoff.</li>
+</ul>
+<h2 id="one-diagram-worth-the-whole-chapter">One diagram worth the whole chapter</h2>
+<figure><img src="diagrams/team-vs-single.svg" alt="Diagram: on the left a single agent with everything tangled in one conversation; on the right a small team with short conversations passing one file along a line." loading="lazy"><figcaption>Diagram: on the left a single agent with everything tangled in one conversation; on the right a small team with short conversations passing one file along a line.</figcaption></figure>
+<p>Left side: one agent, one long conversation, four jobs at once, memory fraying at the edges. Right side: the same job chopped into short conversations, each with a fresh agent, connected by files. Notice the file in the middle of the right-hand diagram — that is the entire secret, and it gets its own chapter.</p>
+<h2 id="the-formation-we-use-in-this-book-planner-workers-checker">The formation we use in this book: Planner, Workers, Checker</h2>
+<p>Almost every project in this guide uses the same tiny staff:</p>
+<ul>
+<li><strong>Planner</strong> — splits your goal into jobs and writes the kickoff memo.</li>
+<li><strong>Workers</strong> — each does one kind of work and leaves a draft in the shared folder.</li>
+<li><strong>Checker</strong> — reads the drafts with fresh eyes and either approves or bounces them back.</li>
+</ul>
+<p>You can run this in a web chat by opening separate conversations ("planner chat," "worker chat," "checker chat"). You can run it in agentic tools by creating subagents. The plumbing does not matter yet; the <em>shape</em> is what you are learning.</p>
+<h2 id="a-worked-taste-in-three-sentences">A worked taste, in three sentences</h2>
+<p>You want to sell five guitar pedals on eBay. One agent tried it once and produced confident, half-tangled listings. Under the team approach, the <strong>planner</strong> writes a one-page memo naming the five items; a <strong>researcher</strong> files one fact sheet per pedal; a <strong>writer</strong> turns each fact sheet into a listing; a <strong>checker</strong> verifies every listing against its fact sheet before you publish. Same tools, same free chat windows — the difference is choreography.</p>
+<h2 id="recap-card">Recap card</h2>
+<ul>
+<li>Run the fifteen-second test: Split? Two eyes? Too big?</li>
+<li>Two or more yeses = team. Zero = single agent.</li>
+<li>Team problems are mostly memory problems; short conversations and files are the fix.</li>
+<li>Default formation: Planner, Workers, Checker.</li>
+</ul>
+<div class="nav-arrows">
+  <a href="about.html">← About This Guide</a>
+  <a href="roles-and-handoffs.html">Roles and Handoffs →</a>
+</div>
+</main>
+<footer class="site">
+  <p>The Multi-Agent Teams Guide - plain-English orchestration basics, complements the Agents-and-MCP Handbook.</p>
+  <p>Educational only - not medical, legal, tax, or financial advice. MIT licensed.</p>
+  <p>Copyright (c) 2026 Asdale Dynamics, LLC</p>
+</footer>
+</body>
+</html>

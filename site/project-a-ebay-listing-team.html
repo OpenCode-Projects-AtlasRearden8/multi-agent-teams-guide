@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Project A - eBay Listing Team - The Multi-Agent Teams Guide</title>
+<meta name="description" content="A plain-English manual on running several AI agents together like a tiny staff. Education only, no code required.">
+<style>
+:root {
+  --bg: #fbf7f0; --paper: #ffffff; --ink: #3a3a3a; --soft: #6b5d4f;
+  --teal: #2a7f8f; --rust: #b58a4a; --violet: #5c6bb0; --line: #e4dccb;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; background: var(--bg); color: var(--ink);
+  font-family: "Trebuchet MS", Verdana, system-ui, sans-serif;
+  line-height: 1.65; font-size: 17px;
+}
+header.site {
+  background: #f2e9da; border-bottom: 3px solid #d8c7a8; padding: 1rem 1.25rem 0.6rem;
+}
+.site-title { font-size: 1.35rem; font-weight: bold; color: var(--soft); text-decoration: none; }
+.site-title span { color: var(--teal); }
+nav.menu { margin-top: 0.6rem; display: flex; flex-wrap: wrap; gap: 0.25rem 0.9rem; font-size: 0.85rem; }
+nav.menu a { color: var(--soft); text-decoration: none; padding: 0.12rem 0.4rem; border-radius: 6px; }
+nav.menu a:hover { background: #e8dcc3; }
+nav.menu a.current { background: var(--teal); color: #fff; }
+main { max-width: 820px; margin: 0 auto; padding: 1.5rem 1.25rem 3rem; background: var(--paper); min-height: 55vh; border-left: 1px solid var(--line); border-right: 1px solid var(--line); }
+h1 { font-size: 1.9rem; color: var(--soft); margin: 0.2em 0 0.4em; }
+h2 { color: #1f5f6a; margin-top: 2.1em; border-bottom: 2px solid var(--line); padding-bottom: 0.15em; }
+h3 { color: var(--rust); }
+a { color: #1f6ab0; }
+code { background: #f3ede0; padding: 0.08em 0.35em; border-radius: 5px; font-size: 0.9em; }
+pre { background: #2f2a24; color: #f3ede0; padding: 1rem; border-radius: 10px; overflow-x: auto; line-height: 1.5; }
+pre code { background: none; color: inherit; padding: 0; font-size: 0.85rem; }
+blockquote { background: #fdf6e3; border-left: 5px solid var(--rust); margin: 1rem 0; padding: 0.5rem 1rem; border-radius: 0 8px 8px 0; }
+table { border-collapse: collapse; width: 100%; margin: 1rem 0; font-size: 0.92em; }
+th, td { border: 1px solid var(--line); padding: 0.45rem 0.6rem; text-align: left; }
+th { background: #f2e9da; color: var(--soft); }
+figure { margin: 1.5rem 0; text-align: center; }
+figure img { max-width: 100%; height: auto; border: 1px solid var(--line); border-radius: 10px; background: #fff; }
+figcaption { font-size: 0.82rem; color: var(--soft); margin-top: 0.4rem; }
+.disclaimer { background: #fdf3d7; border: 1px dashed var(--rust); border-radius: 10px; padding: 0.6rem 1rem; font-size: 0.85rem; color: var(--soft); }
+footer.site { text-align: center; color: var(--soft); font-size: 0.8rem; padding: 1.5rem 1rem 2.5rem; }
+.nav-arrows { display: flex; justify-content: space-between; margin-top: 2.5rem; padding-top: 1rem; border-top: 2px solid var(--line); font-size: 0.9rem; }
+.onpage { font-size: 0.8rem; color: var(--soft); background: #f6f0e3; border-radius: 8px; padding: 0.55rem 0.9rem; }
+.onpage strong { color: #1f5f6a; }
+
+</style>
+</head>
+<body>
+<header class="site">
+  <a class="site-title" href="index.html">The Multi-Agent <span>Teams</span> Guide</a>
+  <nav class="menu">
+    <a href="about.html" class="">About This Guide</a>
+    <a href="when-a-team-beats-one-agent.html" class="">When a Team Beats One Agent</a>
+    <a href="roles-and-handoffs.html" class="">Roles and Handoffs</a>
+    <a href="shared-file-conventions.html" class="">Shared-File Conventions</a>
+    <a href="spotting-confusion-loops.html" class="">Spotting Confusion Loops</a>
+    <a href="project-a-ebay-listing-team.html" class="current">Project A - eBay Listing Team</a>
+    <a href="project-b-book-launch-team.html" class="">Project B - Book-Launch Team</a>
+    <a href="project-c-household-paperwork-team.html" class="">Project C - Household Paperwork Team</a>
+    <a href="free-tools-and-next-steps.html" class="">Free Tools and Next Steps</a>
+  </nav>
+</header>
+<main>
+<p class="onpage"><strong>On this page:</strong> <a href="#the-project-brief-fictional-but-realistic">The project brief (fictional but realistic)</a> - <a href="#the-roster">The roster</a> - <a href="#the-folder">The folder</a> - <a href="#step-1-write-the-kickoff-you-planner-one-short-chat">Step 1 — Write the kickoff (you + planner, one short chat)</a> - <a href="#step-2-staff-each-chat-paste-the-role-card">Step 2 — Staff each chat (paste the role card)</a> - <a href="#step-3-the-research-pass-researcher">Step 3 — The research pass (researcher)</a> - <a href="#step-4-the-writer-pass-with-the-handoff-researcher-writer">Step 4 — The writer pass, with the handoff (researcher → writer)</a> - <a href="#step-5-the-checking-pass-checker">Step 5 — The checking pass (checker)</a> - <a href="#step-6-you-approve-the-team-ships">Step 6 — You approve, the team ships</a> - <a href="#adapt-around-and-reuse">Adapt around and reuse</a> - <a href="#what-this-project-taught-in-case-you-skimmed">What this project taught (in case you skimmed)</a></p>
+<h1>Project A - eBay Listing Team</h1>
+<p>Five vintage guitar pedals, five listings, one unhurried afternoon.</p>
+<h2 id="the-project-brief-fictional-but-realistic">The project brief (fictional but realistic)</h2>
+<p>You clear out a small batch of guitar pedals from a storage-unit sale — five pedals, no manuals, three with visible serials. You want solid, honest eBay listings this weekend, and you refuse to write them at midnight on your phone. This is the classic single-agent trap: one conversation researches five products and writes five sales listings, and by pedal four it is confidently confusing the pedals with each other.</p>
+<p>A team fixes this by shape, not by effort: the researcher never writes prose, the writer never invents specs, and the checker compares every listing claim against its fact sheet before you hit publish.</p>
+<blockquote><p>Education note: this project is a learning exercise. Follow your marketplace's current policies before listing anything real, and get price expectations from sold listings, not vibes.</p></blockquote>
+<h2 id="the-roster">The roster</h2>
+<table>
+<thead>
+<tr>
+<th>Role</th>
+<th>Filled by</th>
+<th>Owns</th>
+<th>Produces</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Boss</td>
+<td>You</td>
+<td>kickoff.md, moves to final/</td>
+<td>approvals</td>
+</tr>
+<tr>
+<td>Planner</td>
+<td>Planner chat</td>
+<td>kickoff.md (drafts it)</td>
+<td>kickoff + task memos</td>
+</tr>
+<tr>
+<td>Researcher</td>
+<td>Researcher chat</td>
+<td>facts/</td>
+<td>5 fact sheets</td>
+</tr>
+<tr>
+<td>Writer</td>
+<td>Writer chat</td>
+<td>drafts/</td>
+<td>5 listing drafts</td>
+</tr>
+<tr>
+<td>Checker</td>
+<td>Checker chat</td>
+<td>notes/</td>
+<td>review memos</td>
+</tr>
+</tbody>
+</table>
+<p>Four agents (plus you, the boss), four short conversations. Every "chat" is just a fresh conversation with its role description pasted at the top. Total setup, under fifteen minutes.</p>
+<h2 id="the-folder">The folder</h2>
+<pre><code>pedals-project/
+  kickoff.md
+  log.md
+  notes/
+  facts/
+  drafts/
+  final/
+  archive/</code></pre>
+<p>Create it yourself in two minutes, or have your planner agent list it (never have an agent create folders <em>unannounced</em> on anything you care about — you are the boss of the floor plan).</p>
+<h2 id="step-1-write-the-kickoff-you-planner-one-short-chat">Step 1 — Write the kickoff (you + planner, one short chat)</h2>
+<p>Paste this to your planner chat:</p>
+<pre><code>You are my Planner. Write my kickoff.md (draft only) for this project.
+Goal: create 5 honest eBay listings for 5 vintage guitar pedals.
+Definition of done: one listing per pedal in final/, every claim traceable
+to its fact sheet, unknown values marked "not stated", I approve each one.
+Roster: me (BOSS, approvals), RESEARCHER (facts/), WRITER (drafts/),
+CHECKER (notes/ memos only). House rule: one writer per file; questions
+go in notes/questions.md. Folder is pedals-project/. Keep it under 25 lines.</code></pre>
+<p>A good planner drafts the five-line kickoff from the roles chapter. Read it, fix it, save it as <code>kickoff.md</code>. (This sample draft is used by all the later steps.)</p>
+<h2 id="step-2-staff-each-chat-paste-the-role-card">Step 2 — Staff each chat (paste the role card)</h2>
+<p>To the researcher chat:</p>
+<pre><code>You are my RESEARCHER. You own facts/ (one file per pedal).
+You produce fact sheets only — no marketing language, no guesses.
+Format: item, model, serial (if visible), condition notes, best
+sold-listing match for model/type, typical price range from recent SOLD
+listings, sources (links), open items. When unsure: stop and write the question
+to notes/questions.md. Log one line to log.md when done.</code></pre>
+<p>To the writer chat, the same pattern; to the checker chat add: <code>You NEVER rewrite drafts. You write review memos in notes/.</code> Copy those role cards — they are most of the value of this page.</p>
+<h2 id="step-3-the-research-pass-researcher">Step 3 — The research pass (researcher)</h2>
+<p>Hand the researcher the kickoff and your item notes. Abbreviated sample output — <code>facts/pedal-02-facts.md</code>:</p>
+<pre><code>STATUS: DRAFT (researcher)
+# Pedal 02 — "Phase Shifter" (three knobs, teal paint, scuffed)
+- Model: best guess "Phase Shifter" pedal, similar to 1970s 'phase' pedals; EXACT model NOT confirmed
+- Serial/plate: none found; no date codes visible
+- Condition: teal paint scuffed on corners; knobs original; no adapter included
+- Sold-comp price range: $40–120 depending on brand/model (sources: 6 recent sold listings)
+- Sources: [seller photos analyzed: ITEM-02-photo1..4] [sold listings: 6 links]
+- Open items: brand unknown (logos worn); exact model unknown
+- Watch out: do NOT list decade or brand as fact. Listing must say "unbranded".
+2026-03-01 RESEARCHER logged: pedal-02 done with 2 open items</code></pre>
+<p>That final "Watch out" line is exactly what makes the whole system run.</p>
+<h2 id="step-4-the-writer-pass-with-the-handoff-researcher-writer">Step 4 — The writer pass, with the handoff (researcher → writer)</h2>
+<p>The researcher's handoff memo (<code>notes/handoff-writer-1.md</code>):</p>
+<pre><code>HANDOFF — RESEARCHER to WRITER
+DONE: all 5 fact sheets in facts/. 3 pedals fully identified (01, 03, 05).
+2 have open items (02 brand unknown, 04 power-adapter voltage unstated).
+NEXT: draft one eBay listing per pedal in drafts/, using ONLY fact-sheet
+fields. Title ≤80 chars, 120–180 word description, condition honest,
+shipping/me terms from kickoff.md. Unknown = "not stated", never guessed.
+WATCH OUT: pedal-02 must be listed "unbranded" and "model unstated";
+pedal-04 voltage: "verify with seller" if it stays unknown.</code></pre>
+<p>Sample writer output (<code>drafts/pedal-02-listing-DRAFT.md</code>, abbreviated):</p>
+<pre><code>STATUS: DRAFT (writer)
+TITLE: Vintage Teal Phase Shifter Guitar Pedal - Unbranded - Untested - Ships Free
+DESCRIPTION (draft): Vintage unbranded phase shifter pedal, teal finish with
+honest wear. Untested (no adapter) — sold as-is, exactly as photographed.
+Knobs appear original. Classic phase-pedal look perfect for boards or repair
+projects. Ships free from a smoke-free home. Ask any questions before buying.
+CLAIM MAP: unbranded-&gt;fact02 [researcher] | untested-&gt;fact02 [no adapter]
+| knobs original-&gt;fact02 | teal paint-&gt;fact02 | smoke-free-&gt;my terms</code></pre>
+<p>The <strong>claim map</strong> is a habit worth stealing: every claim in the draft mapped to the fact file it came from. Making a claim-map is a one-line instruction to the writer ("append a CLAIM MAP listing each factual sentence and its source field") — it gives the checker (and you) a complete to-do list.</p>
+<h2 id="step-5-the-checking-pass-checker">Step 5 — The checking pass (checker)</h2>
+<p>Paste the role card plus the draft and its fact sheet side by side. Sample checker memo (<code>notes/review-pedal-02.md</code>):</p>
+<pre><code>REVIEW MEMO — pedal-02, round 1 (CHECKER)
+STATUS: BOUNCE (needs 1 fix, 1 OK)
+1. "Knobs appear original" — fact sheet says knobs original. Stated as
+   appearance, matches evidence. OK.
+2. CLAIM MAP lists "smoke-free" as source "my terms" — kickoff.md has no
+   shipping/terms section yet. TODO: drop the claim, or add terms to
+   kickoff.md with the boss's approval, then keep the claim.
+APPROVE AFTER: item 2 resolved. Resend claim map for spot-check.</code></pre>
+<p>The writer fixes, logs one line, and resends. The checker's next memo reads, in part:</p>
+<pre><code>REVIEW MEMO — pedal-02, round 2 (CHECKER)
+STATUS: APPROVED (smoke-free claim removed; claim map clean).
+Next: boss moves draft to final/ at their own pace.
+Logged: pedal-02 approved, round 2.</code></pre>
+<h2 id="step-6-you-approve-the-team-ships">Step 6 — You approve, the team ships</h2>
+<p>Read each final draft yourself — two minutes per listing, worth it. Flip each to <code>STATUS: APPROVED</code>, move files into <code>final/</code>, and list at your pace. Rename nothing; log one line per publish. The folder becomes a record: what was listed, what evidence it was based on, what the checker said.</p>
+<h2 id="adapt-around-and-reuse">Adapt around and reuse</h2>
+<ul>
+<li><strong>Extra honesty boosts sales</strong> in reselling: "unbranded, model unstated" reads as <em>honest</em> to experienced buyers, not sloppy. The team form makes this natural — that is its point.</li>
+<li><strong>Do a 2-pedal pilot first</strong> if you are new to teams. Five is a fine repeat number: the folder and role cards are already written.</li>
+<li><strong>Same shape, other projects:</strong> a cleaning-out-the-garage team, a Flipping-finds team, a book lots team — anything where honest description plus price research beat intuition.</li>
+</ul>
+<h2 id="what-this-project-taught-in-case-you-skimmed">What this project taught (in case you skimmed)</h2>
+<ul>
+<li>Roles keep skills separate: research vs. writing vs. checking.</li>
+<li>Handoff memos carry context without history.</li>
+<li>The CLAIM MAP is a lightweight acceptance test the checker can actually verify.</li>
+<li>One bounce from a fresh-eyes checker is the whole return on investment: an unsupported claim never reached a live listing.</li>
+</ul>
+<div class="nav-arrows">
+  <a href="spotting-confusion-loops.html">← Spotting Confusion Loops</a>
+  <a href="project-b-book-launch-team.html">Project B - Book-Launch Team →</a>
+</div>
+</main>
+<footer class="site">
+  <p>The Multi-Agent Teams Guide - plain-English orchestration basics, complements the Agents-and-MCP Handbook.</p>
+  <p>Educational only - not medical, legal, tax, or financial advice. MIT licensed.</p>
+  <p>Copyright (c) 2026 Asdale Dynamics, LLC</p>
+</footer>
+</body>
+</html>

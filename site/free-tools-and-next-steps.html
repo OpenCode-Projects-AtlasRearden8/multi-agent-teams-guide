@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Free Tools and Next Steps - The Multi-Agent Teams Guide</title>
+<meta name="description" content="A plain-English manual on running several AI agents together like a tiny staff. Education only, no code required.">
+<style>
+:root {
+  --bg: #fbf7f0; --paper: #ffffff; --ink: #3a3a3a; --soft: #6b5d4f;
+  --teal: #2a7f8f; --rust: #b58a4a; --violet: #5c6bb0; --line: #e4dccb;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; background: var(--bg); color: var(--ink);
+  font-family: "Trebuchet MS", Verdana, system-ui, sans-serif;
+  line-height: 1.65; font-size: 17px;
+}
+header.site {
+  background: #f2e9da; border-bottom: 3px solid #d8c7a8; padding: 1rem 1.25rem 0.6rem;
+}
+.site-title { font-size: 1.35rem; font-weight: bold; color: var(--soft); text-decoration: none; }
+.site-title span { color: var(--teal); }
+nav.menu { margin-top: 0.6rem; display: flex; flex-wrap: wrap; gap: 0.25rem 0.9rem; font-size: 0.85rem; }
+nav.menu a { color: var(--soft); text-decoration: none; padding: 0.12rem 0.4rem; border-radius: 6px; }
+nav.menu a:hover { background: #e8dcc3; }
+nav.menu a.current { background: var(--teal); color: #fff; }
+main { max-width: 820px; margin: 0 auto; padding: 1.5rem 1.25rem 3rem; background: var(--paper); min-height: 55vh; border-left: 1px solid var(--line); border-right: 1px solid var(--line); }
+h1 { font-size: 1.9rem; color: var(--soft); margin: 0.2em 0 0.4em; }
+h2 { color: #1f5f6a; margin-top: 2.1em; border-bottom: 2px solid var(--line); padding-bottom: 0.15em; }
+h3 { color: var(--rust); }
+a { color: #1f6ab0; }
+code { background: #f3ede0; padding: 0.08em 0.35em; border-radius: 5px; font-size: 0.9em; }
+pre { background: #2f2a24; color: #f3ede0; padding: 1rem; border-radius: 10px; overflow-x: auto; line-height: 1.5; }
+pre code { background: none; color: inherit; padding: 0; font-size: 0.85rem; }
+blockquote { background: #fdf6e3; border-left: 5px solid var(--rust); margin: 1rem 0; padding: 0.5rem 1rem; border-radius: 0 8px 8px 0; }
+table { border-collapse: collapse; width: 100%; margin: 1rem 0; font-size: 0.92em; }
+th, td { border: 1px solid var(--line); padding: 0.45rem 0.6rem; text-align: left; }
+th { background: #f2e9da; color: var(--soft); }
+figure { margin: 1.5rem 0; text-align: center; }
+figure img { max-width: 100%; height: auto; border: 1px solid var(--line); border-radius: 10px; background: #fff; }
+figcaption { font-size: 0.82rem; color: var(--soft); margin-top: 0.4rem; }
+.disclaimer { background: #fdf3d7; border: 1px dashed var(--rust); border-radius: 10px; padding: 0.6rem 1rem; font-size: 0.85rem; color: var(--soft); }
+footer.site { text-align: center; color: var(--soft); font-size: 0.8rem; padding: 1.5rem 1rem 2.5rem; }
+.nav-arrows { display: flex; justify-content: space-between; margin-top: 2.5rem; padding-top: 1rem; border-top: 2px solid var(--line); font-size: 0.9rem; }
+.onpage { font-size: 0.8rem; color: var(--soft); background: #f6f0e3; border-radius: 8px; padding: 0.55rem 0.9rem; }
+.onpage strong { color: #1f5f6a; }
+
+</style>
+</head>
+<body>
+<header class="site">
+  <a class="site-title" href="index.html">The Multi-Agent <span>Teams</span> Guide</a>
+  <nav class="menu">
+    <a href="about.html" class="">About This Guide</a>
+    <a href="when-a-team-beats-one-agent.html" class="">When a Team Beats One Agent</a>
+    <a href="roles-and-handoffs.html" class="">Roles and Handoffs</a>
+    <a href="shared-file-conventions.html" class="">Shared-File Conventions</a>
+    <a href="spotting-confusion-loops.html" class="">Spotting Confusion Loops</a>
+    <a href="project-a-ebay-listing-team.html" class="">Project A - eBay Listing Team</a>
+    <a href="project-b-book-launch-team.html" class="">Project B - Book-Launch Team</a>
+    <a href="project-c-household-paperwork-team.html" class="">Project C - Household Paperwork Team</a>
+    <a href="free-tools-and-next-steps.html" class="current">Free Tools and Next Steps</a>
+  </nav>
+</header>
+<main>
+<p class="onpage"><strong>On this page:</strong> <a href="#the-free-toolbox-what-this-book-assumes">The free toolbox (what this book assumes)</a> - <a href="#a-gentle-upgrade-path">A gentle upgrade path</a> - <a href="#choosing-roles-for-a-new-project-the-two-minute-recipe">Choosing roles for a new project (the two-minute recipe)</a> - <a href="#when-to-walk-away-from-a-tool">When to walk away from a tool</a> - <a href="#where-to-go-next">Where to go next</a> - <a href="#the-guides-closing-rule">The guide's closing rule</a></p>
+<h1>Free Tools and Next Steps</h1>
+<p>What to download, what to skip, and where to keep going.</p>
+<h2 id="the-free-toolbox-what-this-book-assumes">The free toolbox (what this book assumes)</h2>
+<table>
+<thead>
+<tr>
+<th>Need</th>
+<th>Free way to get it</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Chats per role</td>
+<td>Separate conversations in any AI web chat you already use (free tiers are fine)</td>
+<td>One tab per role; name the tabs</td>
+</tr>
+<tr>
+<td>Shared files</td>
+<td>A plain folder on your computer</td>
+<td>Any OS; sync optional</td>
+</tr>
+<tr>
+<td>Notes/memos</td>
+<td>Plain <code>.md</code> or <code>.txt</code> files</td>
+<td>Any text editor; no special app</td>
+</tr>
+<tr>
+<td>A folder that syncs</td>
+<td>The free sync tool you already have</td>
+<td>Never sync to anything agents auto-write to without a backup</td>
+</tr>
+<tr>
+<td>Local option (optional)</td>
+<td>A local model runner like Ollama or LM Studio</td>
+<td>Nice for private-ish drafts; slower, no cloud</td>
+</tr>
+<tr>
+<td>Agentic option (optional)</td>
+<td>A terminal or editor agent that supports subagents (e.g., open-source agent tools)</td>
+<td>This is where memos become automatic</td>
+</tr>
+</tbody>
+</table>
+<p>Nothing in this book requires a paid plan. Free tiers limit message volume, not the <em>method</em> — and the method is the product. The companion <em>Agents-and-MCP Handbook</em> covers single-agent tool setup, including MCP, in the same plain-English register.</p>
+<h2 id="a-gentle-upgrade-path">A gentle upgrade path</h2>
+<p>Do not adopt everything at once. Each rung assumes the one before:</p>
+<ul>
+<li><strong>Level 1 — the memo habit (one agent, team-shaped).</strong> Even alone, make every request to a single agent carry Done / Next / Watch out against a written kickoff. You will feel the quality jump without any new tooling.</li>
+<li><strong>Level 2 — two chats (worker + checker).</strong> Add a checker conversation with fresh eyes. This is the cheapest big win in the entire book; most of the quality in our worked projects came from this single split.</li>
+<li><strong>Level 3 — the shared folder.</strong> Files in, files out, one-writer-per-file, status lines. Your team now survives across days and tools.</li>
+<li><strong>Level 4 — role-named subagents.</strong> If you use an agentic tool, define the roles you already wrote. Rules and memos stay identical; only the plumbing changes.</li>
+<li><strong>Level 5 — automation (later, optional).</strong> Scripts or queue tools that relaunch a pipeline nightly. Only after a month of supervised use, and only for jobs that are boring <em>and</em> checkable.</li>
+</ul>
+<h2 id="choosing-roles-for-a-new-project-the-two-minute-recipe">Choosing roles for a new project (the two-minute recipe)</h2>
+<p>Answer, in writing, before opening any chat:</p>
+<ul>
+<li>What is the <strong>one deliverable</strong>? (A file name and its definition of done.)</li>
+<li>What are the <strong>kinds of work</strong>? (Usually: gather facts, produce words/numbers, check.)</li>
+<li><strong>Where can errors hurt</strong> real people, money, or trust? Those steps each get a checker.</li>
+<li><strong>Who owns which file?</strong> Assign ownership before assigning tasks.</li>
+</ul>
+<p>Then write the kickoff, staff the chats, and run <strong>one pass</strong> before reading anything.</p>
+<h2 id="when-to-walk-away-from-a-tool">When to walk away from a tool</h2>
+<ul>
+<li>It hides what it does to your files, or moves them without telling you.</li>
+<li>It cannot be interrupted easily (remember the kill-switch habit).</li>
+<li>It makes the shared folder harder to read — the folder is the product.</li>
+<li>Your cost or attention per result is worse than doing it yourself with Level 1.</li>
+</ul>
+<p>There is no shame in the single-agent level; most projects live there comfortably.</p>
+<h2 id="where-to-go-next">Where to go next</h2>
+<ul>
+<li><strong>Re-run Project A</strong> with your own garage shelf. The claim-map habit transfers to anything you sell.</li>
+<li><strong>Steal Project B's banned-claims list</strong> for any writing that must be true: landing pages, listings, class syllabi, RFP responses.</li>
+<li><strong>Run Project C's sorter-only mode</strong> on a low-energy week and notice that a five-minute team still beats a zero-minute guilt spiral.</li>
+<li><strong>Read the Agents-and-MCP Handbook</strong> when you want single agents wired to tools, files, and services — then come back and give each of those agents a role card.</li>
+<li><strong>Teach it forward:</strong> our style notes (plain English, step by step, never condescending) are yours to copy. If you build a team template that works, publish it; somebody's Tuesday needs it.</li>
+</ul>
+<h2 id="the-guides-closing-rule">The guide's closing rule</h2>
+<p>A team of agents is just a filing system with opinions. Keep the filing system boring, keep each opinion narrow, keep yourself in the approval loop — and the team will out-work any one agent exactly when it matters.</p>
+<hr>
+<p><em>This guide is educational only — not medical, legal, tax, or financial advice. No personal data, keys, or secrets: use fictional stand-ins everywhere real life appears. Built warm by Asdale Dynamics, LLC.</em></p>
+<div class="nav-arrows">
+  <a href="project-c-household-paperwork-team.html">← Project C - Household Paperwork Team</a>
+  <span></span>
+</div>
+</main>
+<footer class="site">
+  <p>The Multi-Agent Teams Guide - plain-English orchestration basics, complements the Agents-and-MCP Handbook.</p>
+  <p>Educational only - not medical, legal, tax, or financial advice. MIT licensed.</p>
+  <p>Copyright (c) 2026 Asdale Dynamics, LLC</p>
+</footer>
+</body>
+</html>

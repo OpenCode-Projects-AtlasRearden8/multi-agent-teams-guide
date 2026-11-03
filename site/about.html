@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>About This Guide - The Multi-Agent Teams Guide</title>
+<meta name="description" content="A plain-English manual on running several AI agents together like a tiny staff. Education only, no code required.">
+<style>
+:root {
+  --bg: #fbf7f0; --paper: #ffffff; --ink: #3a3a3a; --soft: #6b5d4f;
+  --teal: #2a7f8f; --rust: #b58a4a; --violet: #5c6bb0; --line: #e4dccb;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; background: var(--bg); color: var(--ink);
+  font-family: "Trebuchet MS", Verdana, system-ui, sans-serif;
+  line-height: 1.65; font-size: 17px;
+}
+header.site {
+  background: #f2e9da; border-bottom: 3px solid #d8c7a8; padding: 1rem 1.25rem 0.6rem;
+}
+.site-title { font-size: 1.35rem; font-weight: bold; color: var(--soft); text-decoration: none; }
+.site-title span { color: var(--teal); }
+nav.menu { margin-top: 0.6rem; display: flex; flex-wrap: wrap; gap: 0.25rem 0.9rem; font-size: 0.85rem; }
+nav.menu a { color: var(--soft); text-decoration: none; padding: 0.12rem 0.4rem; border-radius: 6px; }
+nav.menu a:hover { background: #e8dcc3; }
+nav.menu a.current { background: var(--teal); color: #fff; }
+main { max-width: 820px; margin: 0 auto; padding: 1.5rem 1.25rem 3rem; background: var(--paper); min-height: 55vh; border-left: 1px solid var(--line); border-right: 1px solid var(--line); }
+h1 { font-size: 1.9rem; color: var(--soft); margin: 0.2em 0 0.4em; }
+h2 { color: #1f5f6a; margin-top: 2.1em; border-bottom: 2px solid var(--line); padding-bottom: 0.15em; }
+h3 { color: var(--rust); }
+a { color: #1f6ab0; }
+code { background: #f3ede0; padding: 0.08em 0.35em; border-radius: 5px; font-size: 0.9em; }
+pre { background: #2f2a24; color: #f3ede0; padding: 1rem; border-radius: 10px; overflow-x: auto; line-height: 1.5; }
+pre code { background: none; color: inherit; padding: 0; font-size: 0.85rem; }
+blockquote { background: #fdf6e3; border-left: 5px solid var(--rust); margin: 1rem 0; padding: 0.5rem 1rem; border-radius: 0 8px 8px 0; }
+table { border-collapse: collapse; width: 100%; margin: 1rem 0; font-size: 0.92em; }
+th, td { border: 1px solid var(--line); padding: 0.45rem 0.6rem; text-align: left; }
+th { background: #f2e9da; color: var(--soft); }
+figure { margin: 1.5rem 0; text-align: center; }
+figure img { max-width: 100%; height: auto; border: 1px solid var(--line); border-radius: 10px; background: #fff; }
+figcaption { font-size: 0.82rem; color: var(--soft); margin-top: 0.4rem; }
+.disclaimer { background: #fdf3d7; border: 1px dashed var(--rust); border-radius: 10px; padding: 0.6rem 1rem; font-size: 0.85rem; color: var(--soft); }
+footer.site { text-align: center; color: var(--soft); font-size: 0.8rem; padding: 1.5rem 1rem 2.5rem; }
+.nav-arrows { display: flex; justify-content: space-between; margin-top: 2.5rem; padding-top: 1rem; border-top: 2px solid var(--line); font-size: 0.9rem; }
+.onpage { font-size: 0.8rem; color: var(--soft); background: #f6f0e3; border-radius: 8px; padding: 0.55rem 0.9rem; }
+.onpage strong { color: #1f5f6a; }
+
+</style>
+</head>
+<body>
+<header class="site">
+  <a class="site-title" href="index.html">The Multi-Agent <span>Teams</span> Guide</a>
+  <nav class="menu">
+    <a href="about.html" class="current">About This Guide</a>
+    <a href="when-a-team-beats-one-agent.html" class="">When a Team Beats One Agent</a>
+    <a href="roles-and-handoffs.html" class="">Roles and Handoffs</a>
+    <a href="shared-file-conventions.html" class="">Shared-File Conventions</a>
+    <a href="spotting-confusion-loops.html" class="">Spotting Confusion Loops</a>
+    <a href="project-a-ebay-listing-team.html" class="">Project A - eBay Listing Team</a>
+    <a href="project-b-book-launch-team.html" class="">Project B - Book-Launch Team</a>
+    <a href="project-c-household-paperwork-team.html" class="">Project C - Household Paperwork Team</a>
+    <a href="free-tools-and-next-steps.html" class="">Free Tools and Next Steps</a>
+  </nav>
+</header>
+<main>
+<p class="onpage"><strong>On this page:</strong> <a href="#the-one-paragraph-version">The one-paragraph version</a> - <a href="#who-this-is-for">Who this is for</a> - <a href="#what-you-need">What you need</a> - <a href="#the-map-of-this-guide">The map of this guide</a> - <a href="#how-this-complements-the-agents-and-mcp-handbook">How this complements the agents-and-MCP handbook</a> - <a href="#the-mental-model-in-one-sentence">The mental model in one sentence</a> - <a href="#yellow-post-it-education-disclaimer">Yellow Post-It: education disclaimer</a> - <a href="#ground-rules-used-throughout">Ground rules used throughout</a></p>
+<h1>About This Guide</h1>
+<p>Multi-agent teams, explained like a friend would.</p>
+<h2 id="the-one-paragraph-version">The one-paragraph version</h2>
+<p>Sometimes one AI agent is not enough — the task is too big, needs different skills, or genuinely benefits from a second opinion. This manual shows you how to run several AI agents together as a tiny staff: one agent plans, others do the work, one checks it, and they pass files to each other like coworkers leaving notes. You never need to write code. What you do need is a folder, a few plain-English documents, and a habit of reading what your agents actually wrote.</p>
+<h2 id="who-this-is-for">Who this is for</h2>
+<p>Absolute beginners who have already used one AI assistant (ChatGPT, Claude, Copilot, Gemini, or a local tool) and are wondering: <em>what would change if I had two or three of these working together?</em> You do not need programming experience. Every example here is a home or small-business project: reselling on eBay, launching a book, and taming household paperwork.</p>
+<h2 id="what-you-need">What you need</h2>
+<ul>
+<li>A computer, any age, any operating system.</li>
+<li>One or more AI assistants you already have access to (web chats count!)</li>
+<li>A normal folder on your computer (or on your desktop) for shared files.</li>
+<li>20 minutes for the first project, 10 minutes for the others.</li>
+</ul>
+<h2 id="the-map-of-this-guide">The map of this guide</h2>
+<ol>
+<li><strong>When a team beats one agent</strong> — how to tell whether to bother with a team at all.</li>
+<li><strong>Roles and handoffs</strong> — how to give each agent one clear job, and how they pass work along.</li>
+<li><strong>Shared-file conventions</strong> — the folder rules that keep a team of agents from stepping on each other.</li>
+<li><strong>Spotting confusion loops</strong> — what it looks like when agents get stuck in circles, and how to bail them out.</li>
+<li><strong>Three worked projects</strong> — an eBay listing team, a book-launch team, and a household paperwork team, each written as a step-by-step walkthrough with sample files.</li>
+<li><strong>Free tools and next steps</strong> — where to go from here without spending money.</li>
+</ol>
+<p>Each page has a diagram. Each project is written so you can follow it with any AI tool — no special software required.</p>
+<h2 id="how-this-complements-the-agents-and-mcp-handbook">How this complements the agents-and-MCP handbook</h2>
+<p>Our companion book, the <em>Agents-and-MCP Handbook</em>, covers the single-agent story: what agents are, how tool calling works, and how MCP (Model Context Protocol) connects one agent to the world. That book is the <strong>one good employee</strong>. This guide is the <strong>org chart</strong> — orchestration basics: when to hire a second agent, how to divide the work, and how to keep the team honest. If you have not read that handbook, nothing here will break; just picture any AI assistant you have used when we say "agent."</p>
+<h2 id="the-mental-model-in-one-sentence">The mental model in one sentence</h2>
+<p>Think of every agent as a polite contractor who works <em>extremely</em> fast, has no memory of yesterday, and will do exactly what you asked even if that was a mistake — so your whole job is to hand each one a clear note, a clear folder, and a clear definition of "done."</p>
+<h2 id="yellow-post-it-education-disclaimer">Yellow Post-It: education disclaimer</h2>
+<p>Everything in this guide is educational. It is not medical, legal, tax, or financial advice. Projects involving money, health paperwork, or anything regulated deserve a human expert. Always read what your agents produce before acting on it.</p>
+<h2 id="ground-rules-used-throughout">Ground rules used throughout</h2>
+<ul>
+<li><strong>No secrets.</strong> Never paste accounts, passwords, or personal details (someone else's!) into an AI. Use fictional stand-ins like "Jane Doe, invoice #123" in your practice files.</li>
+<li><strong>Local-first.</strong> Everything lives in your own folder. No paid services needed for this book.</li>
+<li><strong>Readable by default.</strong> If an agent produced something you cannot skim in one minute, it is too complicated — send it back.</li>
+</ul>
+<div class="nav-arrows">
+  <span></span>
+  <a href="when-a-team-beats-one-agent.html">When a Team Beats One Agent →</a>
+</div>
+</main>
+<footer class="site">
+  <p>The Multi-Agent Teams Guide - plain-English orchestration basics, complements the Agents-and-MCP Handbook.</p>
+  <p>Educational only - not medical, legal, tax, or financial advice. MIT licensed.</p>
+  <p>Copyright (c) 2026 Asdale Dynamics, LLC</p>
+</footer>
+</body>
+</html>

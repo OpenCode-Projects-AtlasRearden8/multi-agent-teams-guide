@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Spotting Confusion Loops - The Multi-Agent Teams Guide</title>
+<meta name="description" content="A plain-English manual on running several AI agents together like a tiny staff. Education only, no code required.">
+<style>
+:root {
+  --bg: #fbf7f0; --paper: #ffffff; --ink: #3a3a3a; --soft: #6b5d4f;
+  --teal: #2a7f8f; --rust: #b58a4a; --violet: #5c6bb0; --line: #e4dccb;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; background: var(--bg); color: var(--ink);
+  font-family: "Trebuchet MS", Verdana, system-ui, sans-serif;
+  line-height: 1.65; font-size: 17px;
+}
+header.site {
+  background: #f2e9da; border-bottom: 3px solid #d8c7a8; padding: 1rem 1.25rem 0.6rem;
+}
+.site-title { font-size: 1.35rem; font-weight: bold; color: var(--soft); text-decoration: none; }
+.site-title span { color: var(--teal); }
+nav.menu { margin-top: 0.6rem; display: flex; flex-wrap: wrap; gap: 0.25rem 0.9rem; font-size: 0.85rem; }
+nav.menu a { color: var(--soft); text-decoration: none; padding: 0.12rem 0.4rem; border-radius: 6px; }
+nav.menu a:hover { background: #e8dcc3; }
+nav.menu a.current { background: var(--teal); color: #fff; }
+main { max-width: 820px; margin: 0 auto; padding: 1.5rem 1.25rem 3rem; background: var(--paper); min-height: 55vh; border-left: 1px solid var(--line); border-right: 1px solid var(--line); }
+h1 { font-size: 1.9rem; color: var(--soft); margin: 0.2em 0 0.4em; }
+h2 { color: #1f5f6a; margin-top: 2.1em; border-bottom: 2px solid var(--line); padding-bottom: 0.15em; }
+h3 { color: var(--rust); }
+a { color: #1f6ab0; }
+code { background: #f3ede0; padding: 0.08em 0.35em; border-radius: 5px; font-size: 0.9em; }
+pre { background: #2f2a24; color: #f3ede0; padding: 1rem; border-radius: 10px; overflow-x: auto; line-height: 1.5; }
+pre code { background: none; color: inherit; padding: 0; font-size: 0.85rem; }
+blockquote { background: #fdf6e3; border-left: 5px solid var(--rust); margin: 1rem 0; padding: 0.5rem 1rem; border-radius: 0 8px 8px 0; }
+table { border-collapse: collapse; width: 100%; margin: 1rem 0; font-size: 0.92em; }
+th, td { border: 1px solid var(--line); padding: 0.45rem 0.6rem; text-align: left; }
+th { background: #f2e9da; color: var(--soft); }
+figure { margin: 1.5rem 0; text-align: center; }
+figure img { max-width: 100%; height: auto; border: 1px solid var(--line); border-radius: 10px; background: #fff; }
+figcaption { font-size: 0.82rem; color: var(--soft); margin-top: 0.4rem; }
+.disclaimer { background: #fdf3d7; border: 1px dashed var(--rust); border-radius: 10px; padding: 0.6rem 1rem; font-size: 0.85rem; color: var(--soft); }
+footer.site { text-align: center; color: var(--soft); font-size: 0.8rem; padding: 1.5rem 1rem 2.5rem; }
+.nav-arrows { display: flex; justify-content: space-between; margin-top: 2.5rem; padding-top: 1rem; border-top: 2px solid var(--line); font-size: 0.9rem; }
+.onpage { font-size: 0.8rem; color: var(--soft); background: #f6f0e3; border-radius: 8px; padding: 0.55rem 0.9rem; }
+.onpage strong { color: #1f5f6a; }
+
+</style>
+</head>
+<body>
+<header class="site">
+  <a class="site-title" href="index.html">The Multi-Agent <span>Teams</span> Guide</a>
+  <nav class="menu">
+    <a href="about.html" class="">About This Guide</a>
+    <a href="when-a-team-beats-one-agent.html" class="">When a Team Beats One Agent</a>
+    <a href="roles-and-handoffs.html" class="">Roles and Handoffs</a>
+    <a href="shared-file-conventions.html" class="">Shared-File Conventions</a>
+    <a href="spotting-confusion-loops.html" class="current">Spotting Confusion Loops</a>
+    <a href="project-a-ebay-listing-team.html" class="">Project A - eBay Listing Team</a>
+    <a href="project-b-book-launch-team.html" class="">Project B - Book-Launch Team</a>
+    <a href="project-c-household-paperwork-team.html" class="">Project C - Household Paperwork Team</a>
+    <a href="free-tools-and-next-steps.html" class="">Free Tools and Next Steps</a>
+  </nav>
+</header>
+<main>
+<p class="onpage"><strong>On this page:</strong> <a href="#what-a-confusion-loop-feels-like">What a confusion loop feels like</a> - <a href="#why-loops-happen">Why loops happen</a> - <a href="#the-five-stage-bail-out-fits-on-one-index-card">The five-stage bail-out (fits on one index card)</a> - <a href="#prevention-that-pays-for-itself">Prevention that pays for itself</a> - <a href="#never-unattended-never-runaway">Never unattended, never runaway</a> - <a href="#the-loop-vs-the-healthy-cycle">The loop vs. the healthy cycle</a> - <a href="#a-real-shaped-rescue-condensed">A real-shaped rescue (condensed)</a> - <a href="#recap-card">Recap card</a></p>
+<h1>Spotting Confusion Loops</h1>
+<p>Teams can get stuck in polite circles. Here is the radar, the toolkit, and the trap door.</p>
+<h2 id="what-a-confusion-loop-feels-like">What a confusion loop feels like</h2>
+<p>A confusion loop is when your team keeps <em>working</em> without getting <em>anywhere</em>. It rarely looks broken from the outside — everyone seems busy, memos flow, "on it!" replies stack up. The tell is repetition with no new output:</p>
+<ul>
+<li>Two agents keep politely asking each other the same question instead of answering it (the ping-pong).</li>
+<li>Revised drafts keep "fixing" a field the facts file says is unknown — each pass asserts a different value, so nobody trusts any copy.</li>
+<li>The plan keeps growing: kickoff said five items, by round four the memo covers eleven, half of them invented.</li>
+<li>Every handoff includes "as discussed" — but there is no discussion; agents guess what each other meant.</li>
+<li>You are the bottleneck: the team keeps sending you the <em>same three questions</em> each round.</li>
+</ul>
+<p>If any of these is happening, stop the team. Stopping is free; a shuffled stack of confused files costs hours.</p>
+<h2 id="why-loops-happen">Why loops happen</h2>
+<p>Almost every loop has the same four causes, in order of how often you will meet them:</p>
+<ul>
+<li><strong>No ground-truth file.</strong> Two agents each decide what "done" means, or what the facts are, rather than reading one folder. (Home fix: write it down in <code>kickoff.md</code> or <code>facts/</code> and point both agents at it.)</li>
+<li><strong>Overlapping ownership.</strong> Two agents both editing (or rewriting each other via "helpful notes" that turn into edits) the same draft. (Home fix: one writer per file, no exceptions.)</li>
+<li><strong>Green status lies.</strong> A file marked APPROVED or DRAFT does not match what its content shows. (Fix: a status is flipped only by the role allowed to flip it.)</li>
+<li><strong>Too-large stage.</strong> The step got so big ("plan the launch") that instead of finishing it, agents discuss finishing it. (Fix: cut every step down to the size of one memo.)</li>
+</ul>
+<p>Loops are rarely anyone's fault, and there is always a clean, small fix.</p>
+<h2 id="the-five-stage-bail-out-fits-on-one-index-card">The five-stage bail-out (fits on one index card)</h2>
+<p>When you smell a loop, do this in order. It takes under ten minutes:</p>
+<ol>
+<li><strong>Freeze.</strong> Tell every agent, in their own chat, one word: STOP. No more edits until the boss speaks.</li>
+<li><strong>Read the log and the three newest memos.</strong> Find the moment the team last moved forward. Where was a status flipped, a bounce answered for real? (2026-03-01 CHECKER bounced pedal-02, and then?) If the answer is "I edited after the bounce without fixing the stated problem," you have found the break in the circuit.</li>
+<li><strong>Appoint one owner for the stuck file.</strong> Not "whoever": one name, one file. Everyone else becomes a note-writer.</li>
+<li><strong>Rewrite the definition of done in four lines.</strong> Physically, in the kickoff file: "pedal-02 listing is done when: (a) every claim traces to a fact file, (b) unknown values say 'not stated', (c) checker approved." Vague goals generate loops; checkable goals destroy them.</li>
+<li><strong>Restart with a fresh kickoff note.</strong> One memo to the owner: recaps the goal in one line, points at the definition of done, and gives a due-when (a time-boxed run is acceptable — "one pass, then report").</li>
+</ol>
+<p>The restart memo is deliberately fresh: the old thread carries loop residue, so <em>do not</em> paste it along.</p>
+<h2 id="prevention-that-pays-for-itself">Prevention that pays for itself</h2>
+<ul>
+<li><strong>Small teams.</strong> Three agents loop less than five. Anyone whose role has no file gets cut.</li>
+<li><strong>Time boxes.</strong> In every kickoff: "If a handoff round makes no visible progress after two passes, stop and write the boss." Agents will honor it; you only have to read.</li>
+<li><strong>Ground truth first.</strong> Never launch a team before <code>facts/</code> or an equivalent exists. Teams launched over empty fact folders discover "facts" by majority vote.</li>
+<li><strong>One pass, then read.</strong> Especially early on: one cycle per session, then you read all outputs yourself before round 2. Ten minutes of reading protects you from an hour of unattended spinning.</li>
+<li><strong>Kill-switch habit.</strong> However you run agents, figure out how to interrupt them before you launch them. If you do not yet know how to stop a tool mid-run, do not launch long runs with that tool yet.</li>
+</ul>
+<h2 id="never-unattended-never-runaway">Never unattended, never runaway</h2>
+<p>This book's projects are all <em>supervised</em>: you launch one pass, you read results, you launch the next pass. Do not build "runs all night" pipelines while learning. If a tool offers autonomous overnight operation, that is a feature for later chapters of your life — and for tools the companion handbook covers in detail.</p>
+<h2 id="the-loop-vs-the-healthy-cycle">The loop vs. the healthy cycle</h2>
+<figure><img src="diagrams/confusion-loop.svg" alt="Diagram: top half shows a confusion loop — Planner, Writer and Checker in a circle of bouncing memos with a dizzy loop arrow and the caption 'same memos, new day'; bottom half shows a healthy pipeline arriving at final/ with a stop-check icon between rounds." loading="lazy"><figcaption>Diagram: top half shows a confusion loop — Planner, Writer and Checker in a circle of bouncing memos with a dizzy loop arrow and the caption 'same memos, new day'; bottom half shows a healthy pipeline arriving at final/ with a stop-check icon between rounds.</figcaption></figure>
+<h2 id="a-real-shaped-rescue-condensed">A real-shaped rescue (condensed)</h2>
+<p>From Project B later in this book: the social-posts writer kept inventing selling points (like "instant download") that the book's own fact sheet never stated. The checker bounced the file; the writer replied "adjusted, carrying on" but changed only one of six claims; the checker bounced again, citing a slightly different detail; three rounds later, nothing had finished. Every memo was individually reasonable.</p>
+<p>The five-stage bail-out fixed it in one round: freeze, read (the second bounce note had pointed at the wrong file!), one named owner on the posts file, a four-line definition of done ("no claims not sourced from facts/book-v1-fact-sheet.md"), fresh memo. Next draft: bounced zero times.</p>
+<p>The lesson is symmetrical: <strong>when two reasonable agents loop against each other, the fix is rarely a smarter paragraph. It is the missing fact file.</strong></p>
+<h2 id="recap-card">Recap card</h2>
+<ul>
+<li>Loops look like busy work with no new output. Freeze without guilt.</li>
+<li>Four causes: no ground truth, dueling owners, lying statuses, oversized steps.</li>
+<li>Bail-out: STOP, read, appoint, sharpen "done," restart fresh.</li>
+<li>Time-box everything; ground truth before launch; one pass, then human eyes.</li>
+</ul>
+<div class="nav-arrows">
+  <a href="shared-file-conventions.html">← Shared-File Conventions</a>
+  <a href="project-a-ebay-listing-team.html">Project A - eBay Listing Team →</a>
+</div>
+</main>
+<footer class="site">
+  <p>The Multi-Agent Teams Guide - plain-English orchestration basics, complements the Agents-and-MCP Handbook.</p>
+  <p>Educational only - not medical, legal, tax, or financial advice. MIT licensed.</p>
+  <p>Copyright (c) 2026 Asdale Dynamics, LLC</p>
+</footer>
+</body>
+</html>

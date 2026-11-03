@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Project C - Household Paperwork Team - The Multi-Agent Teams Guide</title>
+<meta name="description" content="A plain-English manual on running several AI agents together like a tiny staff. Education only, no code required.">
+<style>
+:root {
+  --bg: #fbf7f0; --paper: #ffffff; --ink: #3a3a3a; --soft: #6b5d4f;
+  --teal: #2a7f8f; --rust: #b58a4a; --violet: #5c6bb0; --line: #e4dccb;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; background: var(--bg); color: var(--ink);
+  font-family: "Trebuchet MS", Verdana, system-ui, sans-serif;
+  line-height: 1.65; font-size: 17px;
+}
+header.site {
+  background: #f2e9da; border-bottom: 3px solid #d8c7a8; padding: 1rem 1.25rem 0.6rem;
+}
+.site-title { font-size: 1.35rem; font-weight: bold; color: var(--soft); text-decoration: none; }
+.site-title span { color: var(--teal); }
+nav.menu { margin-top: 0.6rem; display: flex; flex-wrap: wrap; gap: 0.25rem 0.9rem; font-size: 0.85rem; }
+nav.menu a { color: var(--soft); text-decoration: none; padding: 0.12rem 0.4rem; border-radius: 6px; }
+nav.menu a:hover { background: #e8dcc3; }
+nav.menu a.current { background: var(--teal); color: #fff; }
+main { max-width: 820px; margin: 0 auto; padding: 1.5rem 1.25rem 3rem; background: var(--paper); min-height: 55vh; border-left: 1px solid var(--line); border-right: 1px solid var(--line); }
+h1 { font-size: 1.9rem; color: var(--soft); margin: 0.2em 0 0.4em; }
+h2 { color: #1f5f6a; margin-top: 2.1em; border-bottom: 2px solid var(--line); padding-bottom: 0.15em; }
+h3 { color: var(--rust); }
+a { color: #1f6ab0; }
+code { background: #f3ede0; padding: 0.08em 0.35em; border-radius: 5px; font-size: 0.9em; }
+pre { background: #2f2a24; color: #f3ede0; padding: 1rem; border-radius: 10px; overflow-x: auto; line-height: 1.5; }
+pre code { background: none; color: inherit; padding: 0; font-size: 0.85rem; }
+blockquote { background: #fdf6e3; border-left: 5px solid var(--rust); margin: 1rem 0; padding: 0.5rem 1rem; border-radius: 0 8px 8px 0; }
+table { border-collapse: collapse; width: 100%; margin: 1rem 0; font-size: 0.92em; }
+th, td { border: 1px solid var(--line); padding: 0.45rem 0.6rem; text-align: left; }
+th { background: #f2e9da; color: var(--soft); }
+figure { margin: 1.5rem 0; text-align: center; }
+figure img { max-width: 100%; height: auto; border: 1px solid var(--line); border-radius: 10px; background: #fff; }
+figcaption { font-size: 0.82rem; color: var(--soft); margin-top: 0.4rem; }
+.disclaimer { background: #fdf3d7; border: 1px dashed var(--rust); border-radius: 10px; padding: 0.6rem 1rem; font-size: 0.85rem; color: var(--soft); }
+footer.site { text-align: center; color: var(--soft); font-size: 0.8rem; padding: 1.5rem 1rem 2.5rem; }
+.nav-arrows { display: flex; justify-content: space-between; margin-top: 2.5rem; padding-top: 1rem; border-top: 2px solid var(--line); font-size: 0.9rem; }
+.onpage { font-size: 0.8rem; color: var(--soft); background: #f6f0e3; border-radius: 8px; padding: 0.55rem 0.9rem; }
+.onpage strong { color: #1f5f6a; }
+
+</style>
+</head>
+<body>
+<header class="site">
+  <a class="site-title" href="index.html">The Multi-Agent <span>Teams</span> Guide</a>
+  <nav class="menu">
+    <a href="about.html" class="">About This Guide</a>
+    <a href="when-a-team-beats-one-agent.html" class="">When a Team Beats One Agent</a>
+    <a href="roles-and-handoffs.html" class="">Roles and Handoffs</a>
+    <a href="shared-file-conventions.html" class="">Shared-File Conventions</a>
+    <a href="spotting-confusion-loops.html" class="">Spotting Confusion Loops</a>
+    <a href="project-a-ebay-listing-team.html" class="">Project A - eBay Listing Team</a>
+    <a href="project-b-book-launch-team.html" class="">Project B - Book-Launch Team</a>
+    <a href="project-c-household-paperwork-team.html" class="current">Project C - Household Paperwork Team</a>
+    <a href="free-tools-and-next-steps.html" class="">Free Tools and Next Steps</a>
+  </nav>
+</header>
+<main>
+<p class="onpage"><strong>On this page:</strong> <a href="#the-project-brief-fictional-but-realistic">The project brief (fictional but realistic)</a> - <a href="#the-roster">The roster</a> - <a href="#the-folder">The folder</a> - <a href="#the-sensitive-items-rule-write-this-into-the-kickoff-before-anything-else">The sensitive-items rule (write this into the kickoff before anything else)</a> - <a href="#step-1-kickoff-you-planner-one-short-chat">Step 1 — Kickoff (you + planner, one short chat)</a> - <a href="#step-2-sort-pass-sorter">Step 2 — Sort pass (sorter)</a> - <a href="#step-3-squeeze-pass-squeezer">Step 3 — Squeeze pass (squeezer)</a> - <a href="#step-4-summarize-summarizer">Step 4 — Summarize (summarizer)</a> - <a href="#step-5-check-checker">Step 5 — Check (checker)</a> - <a href="#step-6-the-weekly-ritual-in-real-life">Step 6 — The weekly ritual in real life</a> - <a href="#what-this-project-taught">What this project taught</a> - <a href="#three-real-shaped-wins-from-our-test-run">Three real-shaped wins from our test run</a></p>
+<h1>Project C - Household Paperwork Team</h1>
+<p>Fifteen minutes a week, one folder, and no more "where IS that bill?" moments.</p>
+<h2 id="the-project-brief-fictional-but-realistic">The project brief (fictional but realistic)</h2>
+<p>A household that runs on a shoebox: envelopes from insurance, delivery receipts, a school form, two pharmacy printouts, a parking notice, and (every March) a tax-season panic. You want a weekly fifteen-minute ritual where a small team of agents turns the week's paper pile into one tidy summary and one prioritized to-do list — low energy, ADHD-friendly, nothing clever required on a bad day.</p>
+<p>Why a team beats one agent here: the work splits naturally into <strong>sorting</strong> (what even is this document?), <strong>extracting</strong> (dates, amounts, deadlines), and <strong>summarizing into one page</strong>. One long agent conversation over forty documents turns into mush — every item starts sounding like every other item. Three narrow agents each keep it short.</p>
+<blockquote><p>Education note: this project handles <em>practice</em> documents only — fictional stand-ins. Never upload real personal documents (or anyone's real IDs, medical, insurance, or tax papers) into a cloud AI you haven't cleared. The safe-for-home pattern below works entirely with made-up examples; real documents go in the real drawer, and agents never touch them. This guide is education only, not legal, tax, or medical advice.</p></blockquote>
+<h2 id="the-roster">The roster</h2>
+<table>
+<thead>
+<tr>
+<th>Role</th>
+<th>Owns</th>
+<th>Produces</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Boss (you)</td>
+<td>kickoff.md, final/</td>
+<td>approvals, transcribes paper into practice docs</td>
+</tr>
+<tr>
+<td>Sorter</td>
+<td>facts/ (one card per document)</td>
+<td>sort cards</td>
+</tr>
+<tr>
+<td>Squeezer</td>
+<td>facts/</td>
+<td>deadline-and-amount summaries</td>
+</tr>
+<tr>
+<td>Summarizer</td>
+<td>drafts/</td>
+<td>the weekly one-pager</td>
+</tr>
+<tr>
+<td>Checker</td>
+<td>notes/</td>
+<td>catch-it memo (dates, math, double-counted items)</td>
+</tr>
+</tbody>
+</table>
+<p>"Squeezer" is our nickname for the extractor: it squeezes the juice (dates, amounts, deadlines) out of each sort card into one totals table. Rename the roles anything you like — but keep them narrow.</p>
+<h2 id="the-folder">The folder</h2>
+<pre><code>paperwork-team/
+  kickoff.md          &lt;- includes "sensitive items" rule (below)
+  log.md
+  notes/
+  inbox-practice/      &lt;- this week's fictional practice documents
+  facts/              &lt;- one sort card per document (fictional examples only)
+  drafts/
+  final/
+  archive/</code></pre>
+<p>Same rooms as every project. Reusing the same floor plan across projects is itself a feature: you stop re-deciding logistics, which is exactly where low-energy days go to die.</p>
+<h2 id="the-sensitive-items-rule-write-this-into-the-kickoff-before-anything-else">The sensitive-items rule (write this into the kickoff before anything else)</h2>
+<ul>
+<li><strong>Practice documents only.</strong> Anything typed into this folder gets fictional names, fictional account numbers (<code>#####-99</code> style), and fake dates from this year.</li>
+<li><strong>Real documents stay real-world:</strong> originals in a physical drawer or a scanned folder the agents never see. Agents get the <em>shape</em> of your paperwork, never its contents.</li>
+<li><strong>Never in play:</strong> passwords, medical details, government IDs, real addresses or phone numbers, bank one-time codes. If a document is that sensitive, it simply does not exist from the agents' point of view.</li>
+</ul>
+<p>This is the heart of the project: you get the <em>method</em> without ever exposing the <em>material</em>.</p>
+<h2 id="step-1-kickoff-you-planner-one-short-chat">Step 1 — Kickoff (you + planner, one short chat)</h2>
+<pre><code>Goal: weekly 15-min paperwork ritual: inbox pile -&gt; one summary page + one
+prioritized to-do list.
+Definition of done: weekly-summary-YYYY-MM-DD.md in final/, every deadline
+and amount traceable to a sort card in facts/, checker memo attached.
+Roster: BOSS; SORTER (facts/); SQUEEZER (facts/ totals table);
+SUMMARIZER (drafts/); CHECKER (notes/). One writer per file.
+Sensitive rules: practice documents only; fictional names/numbers/dates.
+Energy rule: on low-energy days, BOSS may run sorter-only and skip steps.
+Time-box: 3 passes max per week.</code></pre>
+<p>That last line — the <strong>energy rule</strong> — is what makes this project ADHD-friendly in practice. Teams don't have to run full-length every week.</p>
+<h2 id="step-2-sort-pass-sorter">Step 2 — Sort pass (sorter)</h2>
+<p>You drop this week's practice documents into <code>inbox-practice/</code> (three fictional stand-ins: a fake utility statement, a fake tuition-form reminder, a fake delivery receipt). The sorter produces one card per document, format:</p>
+<pre><code>STATUS: DRAFT (sorter)
+CARD: utility-statement-2026-03
+TYPE: utility bill (electricity)
+WHO: practice utility company
+DATE ON DOC: 2026-03-01   DUE: 2026-03-18 (stated)
+AMOUNT DUE: $84.12 (stated)   AUTOPAY: NOT STATED
+ACTION NEEDED: pay by due date (or confirm autopay in real-drawer copy)
+WATCH OUT: amount differs from last month's $71.03 — ask household why</code></pre>
+<p>That WATCH OUT is the quiet hero of the whole project: the <em>question</em> gets captured the moment it is noticed, instead of at 11 p.m. when you finally match numbers.</p>
+<h2 id="step-3-squeeze-pass-squeezer">Step 3 — Squeeze pass (squeezer)</h2>
+<p>The squeezer condenses all cards into one totals table, <code>facts/totals-2026-03-01.md</code> (abbreviated):</p>
+<pre><code>STATUS: DRAFT (squeezer)
+| Item | Due | Amount | Needed? |
+| utility-03     | 2026-03-18 | $84.12 | pay or confirm autopay |
+| tuition-form   | 2026-03-15 | n/a    | signature + drop-off |
+| delivery-receipt | none     | $0     | file only |
+TOTAL DUE THIS WEEK: $84.12 | NEXT DUE DATES: 03-15 then 03-18
+Watch-out count: 2 (utility amount change; tuition form needs signature)</code></pre>
+<h2 id="step-4-summarize-summarizer">Step 4 — Summarize (summarizer)</h2>
+<p><code>drafts/weekly-summary-2026-03-01-DRAFT.md</code> (abbreviated):</p>
+<pre><code>STATUS: DRAFT (summarizer)
+# Weekly One-Pager — week of Mar 1 (practice documents)
+MONEY DUE: $84.12 between now and Mar 18.
+DO FIRST (5 min): sign tuition form by Mar 15. Envelope ready on the fridge.
+MONEY QUESTION: electric bill went $71.03 -&gt; $84.12. Ask: rate change?
+ furnace? washer? (2-min curiosity, no dread.)
+FILE: delivery receipt — archive/ if anything goes wrong later.
+NEXT WEEK'S HINT: one non-agent item sits in the real drawer (agents: skip).
+CLAIM MAP: every dollar and date above -&gt; facts/totals-2026-03-01.md</code></pre>
+<p>The one-pager is deliberately short: three lines of action, one line of admin, one question marked for human attention. It fits on a phone screen on a tired Tuesday.</p>
+<h2 id="step-5-check-checker">Step 5 — Check (checker)</h2>
+<p>Sample checker memo (<code>notes/review-week-2026-03-01.md</code>, abbreviated):</p>
+<pre><code>STATUS: APPROVED (0 fixes, 1 compliment)
+- Totals say $84.12; card amounts are $84.12 + $0 + n/a — consistent, good.
+- Tuition form marked "n/a" — no invented money, good.
+- Good catch by design: the summary mentions the real-drawer item only
+  anonymously ("one non-agent item sits in the real drawer") — no document
+  type, no name. Exactly the right level of detail.
+PASS otherwise: totals match, dates match cards, one question flagged only.</code></pre>
+<p>The tone to preserve: the checker changes <strong>nothing</strong>. The summarizer applies fixes and logs; you approve; the file moves to final/. Your Sunday fifteen minutes: read the one-pager, answer the money question if you feel like it, mark done.</p>
+<h2 id="step-6-the-weekly-ritual-in-real-life">Step 6 — The weekly ritual in real life</h2>
+<ul>
+<li><strong>Same day, same place</strong> (Sunday with coffee worked for our fictional household): it is a fifteen-minute meeting you hold with your tiny staff.</li>
+<li><strong>Worst weeks:</strong> run sorter-only (one step, five minutes). A half-built summary beats a guilt spiral every single time.</li>
+<li><strong>March and other scary months:</strong> the totals tables in <code>facts/</code> become your prep binder — the folder is tax-season ready without a single re-scan.</li>
+</ul>
+<h2 id="what-this-project-taught">What this project taught</h2>
+<ul>
+<li>Some projects are about <strong>volume, not quality</strong> — a narrow pipeline beats one brilliant agent.</li>
+<li>The <strong>energy rule</strong> (optional steps, never mandatory guilt) is what makes a routine survive contact with real life.</li>
+<li>Sensitive data handling is a <em>kickoff rule</em>, not software: agents get practice documents, forever.</li>
+</ul>
+<h2 id="three-real-shaped-wins-from-our-test-run">Three real-shaped wins from our test run</h2>
+<ul>
+<li>The $84-vs-$71 utility jump got captured as a <em>curiosity question</em> instead of a 2 a.m. spreadsheet mystery.</li>
+<li>The tuition form earned the one-pager's "DO FIRST" slot plus an envelope reminder, and was signed three days early (practice calendar).</li>
+<li>Zero real personal details ever entered an agent conversation, and the checker even caught a <em>shape-level</em> hint leaking into a summary — exactly the muscle you want trained on a team that might someday handle real work.</li>
+</ul>
+<div class="nav-arrows">
+  <a href="project-b-book-launch-team.html">← Project B - Book-Launch Team</a>
+  <a href="free-tools-and-next-steps.html">Free Tools and Next Steps →</a>
+</div>
+</main>
+<footer class="site">
+  <p>The Multi-Agent Teams Guide - plain-English orchestration basics, complements the Agents-and-MCP Handbook.</p>
+  <p>Educational only - not medical, legal, tax, or financial advice. MIT licensed.</p>
+  <p>Copyright (c) 2026 Asdale Dynamics, LLC</p>
+</footer>
+</body>
+</html>

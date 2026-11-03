@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 320" role="img" aria-labelledby="d5t d5d" font-family="Trebuchet MS, Verdana, sans-serif">
+  <title id="d5t">Every worked project uses the same pipeline</title>
+  <desc id="d5d">A generic five-step pipeline used by all three worked projects: kickoff memo, gather facts, produce drafts with claim maps, check, then final approval. Under it, three tiny labels show how Projects A, B and C map onto the same shape.</desc>
+  <rect x="0" y="0" width="900" height="320" fill="#fbf7f0"/>
+  <defs>
+    <marker id="arrow5" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#5a4a3a"/>
+    </marker>
+  </defs>
+  <text x="450" y="40" font-size="20" font-weight="bold" fill="#5a4a3a" text-anchor="middle">One shape, three projects</text>
+  <rect x="35" y="70" width="150" height="70" rx="12" fill="#cfe4e8" stroke="#2a7f8f" stroke-width="3"/>
+  <text x="110" y="98" font-size="13" font-weight="bold" fill="#1f5f6a" text-anchor="middle">1. kickoff</text>
+  <text x="110" y="120" font-size="11" fill="#1f5f6a" text-anchor="middle">goal + definition of done</text>
+  <rect x="215" y="70" width="150" height="70" rx="12" fill="#f4e4cf" stroke="#b58a4a" stroke-width="3"/>
+  <text x="290" y="98" font-size="13" font-weight="bold" fill="#7a5a26" text-anchor="middle">2. facts</text>
+  <text x="290" y="120" font-size="11" fill="#7a5a26" text-anchor="middle">ground truth, never guessed</text>
+  <rect x="395" y="70" width="150" height="70" rx="12" fill="#f4e4cf" stroke="#b58a4a" stroke-width="3"/>
+  <text x="470" y="98" font-size="13" font-weight="bold" fill="#7a5a26" text-anchor="middle">3. drafts</text>
+  <text x="470" y="120" font-size="11" fill="#7a5a26" text-anchor="middle">with claim maps</text>
+  <rect x="575" y="70" width="150" height="70" rx="12" fill="#d8ddee" stroke="#5c6bb0" stroke-width="3"/>
+  <text x="650" y="98" font-size="13" font-weight="bold" fill="#3a437a" text-anchor="middle">4. check</text>
+  <text x="650" y="120" font-size="11" fill="#3a437a" text-anchor="middle">fresh eyes, memos only</text>
+  <rect x="755" y="70" width="110" height="70" rx="12" fill="#cfe4e8" stroke="#2a7f8f" stroke-width="3"/>
+  <text x="810" y="98" font-size="13" font-weight="bold" fill="#1f5f6a" text-anchor="middle">5. final/</text>
+  <text x="810" y="120" font-size="11" fill="#1f5f6a" text-anchor="middle">boss approves</text>
+  <line x1="185" y1="105" x2="211" y2="105" stroke="#5a4a3a" stroke-width="3" marker-end="url(#arrow5)"/>
+  <line x1="365" y1="105" x2="391" y2="105" stroke="#5a4a3a" stroke-width="3" marker-end="url(#arrow5)"/>
+  <line x1="545" y1="105" x2="571" y2="105" stroke="#5a4a3a" stroke-width="3" marker-end="url(#arrow5)"/>
+  <line x1="725" y1="105" x2="751" y2="105" stroke="#5a4a3a" stroke-width="3" marker-end="url(#arrow5)"/>
+  <path d="M 650 140 C 650 175, 290 175, 290 144" fill="none" stroke="#8a7554" stroke-width="2" stroke-dasharray="5,4" marker-end="url(#arrow5)"/>
+  <text x="470" y="192" font-size="11" fill="#8a7554" text-anchor="middle">bounced? one pass, one fix, then forward again</text>
+  <rect x="35" y="215" width="270" height="70" rx="12" fill="#fff" stroke="#8a7554" stroke-width="2"/>
+  <text x="50" y="242" font-size="13" font-weight="bold" fill="#5a4a3a">Project A: eBay listings</text>
+  <text x="50" y="264" font-size="11" fill="#5a4a3a">facts = pedal sheets, drafts = listings,</text>
+  <text x="50" y="280" font-size="11" fill="#5a4a3a">checks = every claim traces to a sheet</text>
+  <rect x="320" y="215" width="270" height="70" rx="12" fill="#fff" stroke="#8a7554" stroke-width="2"/>
+  <text x="335" y="242" font-size="13" font-weight="bold" fill="#5a4a3a">Project B: book launch</text>
+  <text x="335" y="264" font-size="11" fill="#5a4a3a">facts = banned-claims sheet, drafts = posts,</text>
+  <text x="335" y="280" font-size="11" fill="#5a4a3a">two checkers = claims + tone</text>
+  <rect x="605" y="215" width="270" height="70" rx="12" fill="#fff" stroke="#8a7554" stroke-width="2"/>
+  <text x="620" y="242" font-size="13" font-weight="bold" fill="#5a4a3a">Project C: paperwork</text>
+  <text x="620" y="264" font-size="11" fill="#5a4a3a">facts = sort cards, drafts = one-pager,</text>
+  <text x="620" y="280" font-size="11" fill="#5a4a3a">checker = dates, math, boundaries</text>
+</svg>

@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 520" role="img" aria-labelledby="d4t d4d" font-family="Trebuchet MS, Verdana, sans-serif">
+  <title id="d4t">A confusion loop versus a healthy cycle</title>
+  <desc id="d4d">Top half: Writer and Checker bounce the same memo in an endless circle labelled same memos, new day. Bottom half: the same roles move forward, one pass at a time, through a STOP-freeze checkpoint until the file reaches final.</desc>
+  <rect x="0" y="0" width="900" height="520" fill="#fbf7f0"/>
+  <text x="450" y="40" font-size="20" font-weight="bold" fill="#5a4a3a" text-anchor="middle">Loop versus healthy cycle</text>
+  <text x="205" y="75" font-size="16" font-weight="bold" fill="#c96f6f" text-anchor="middle">The confusion loop</text>
+  <rect x="90" y="95" width="130" height="60" rx="10" fill="#f2c9c9" stroke="#c96f6f" stroke-width="3"/>
+  <text x="155" y="122" font-size="13" fill="#6b3a3a" text-anchor="middle">Writer</text>
+  <text x="155" y="142" font-size="11" fill="#6b3a3a" text-anchor="middle">"adjusted, on it"</text>
+  <rect x="245" y="95" width="130" height="60" rx="10" fill="#e4d3ea" stroke="#8a5a9c" stroke-width="3"/>
+  <text x="310" y="122" font-size="13" fill="#5a2a6a" text-anchor="middle">Checker</text>
+  <text x="310" y="142" font-size="11" fill="#5a2a6a" text-anchor="middle">bounce (again)</text>
+  <path d="M 220 105 C 240 90, 250 90, 245 105" fill="none" stroke="#c96f6f" stroke-width="3" marker-end="url(#arrow3)"/>
+  <path d="M 310 155 C 250 200, 160 200, 130 158" fill="none" stroke="#c96f6f" stroke-width="3" marker-end="url(#arrow3)"/>
+  <text x="215" y="215" font-size="13" font-weight="bold" fill="#c96f6f" text-anchor="middle">same memos, new day</text>
+  <text x="215" y="240" font-size="12" fill="#8a5a5a" text-anchor="middle">looks busy; produces nothing new</text>
+  <rect x="380" y="90" width="440" height="160" rx="12" fill="#fff" stroke="#8a7554" stroke-width="2"/>
+  <text x="405" y="120" font-size="14" font-weight="bold" fill="#c96f6f">Loop symptoms radar</text>
+  <text x="405" y="146" font-size="12" fill="#5a4a3a">* polite ping-pong: same question, endless rounds</text>
+  <text x="405" y="168" font-size="12" fill="#5a4a3a">* re-fixing a field the facts file marks unknown</text>
+  <text x="405" y="190" font-size="12" fill="#5a4a3a">* plan keeps growing; kickoff said 5, memo says 11</text>
+  <text x="405" y="212" font-size="12" fill="#5a4a3a">* handoffs full of "as discussed" (there was no discussion)</text>
+  <text x="405" y="234" font-size="12" fill="#5a4a3a">* the same 3 questions keep coming back to you</text>
+  <text x="450" y="290" font-size="16" font-weight="bold" fill="#4a7c3f" text-anchor="middle">The five-stage bail-out: STOP, read, appoint, sharpen "done", restart</text>
+  <rect x="90" y="330" width="150" height="64" rx="10" fill="#f4e4cf" stroke="#b58a4a" stroke-width="3"/>
+  <text x="165" y="358" font-size="13" fill="#7a5a26" text-anchor="middle">Writer</text>
+  <text x="165" y="378" font-size="11" fill="#7a5a26" text-anchor="middle">one pass, claim map</text>
+  <rect x="310" y="330" width="150" height="64" rx="10" fill="#f4e4cf" stroke="#b58a4a" stroke-width="3"/>
+  <text x="385" y="358" font-size="13" fill="#7a5a26" text-anchor="middle">Checker</text>
+  <text x="385" y="378" font-size="11" fill="#7a5a26" text-anchor="middle">bounce with reasons</text>
+  <rect x="530" y="330" width="150" height="64" rx="10" fill="#fff" stroke="#8a7554" stroke-width="3"/>
+  <text x="605" y="358" font-size="13" fill="#5a4a3a" text-anchor="middle">STOP checkpoint</text>
+  <text x="605" y="378" font-size="11" fill="#5a4a3a" text-anchor="middle">boss reads; 2 passes max</text>
+  <rect x="740" y="330" width="110" height="64" rx="10" fill="#cfe4e8" stroke="#2a7f8f" stroke-width="3"/>
+  <text x="795" y="358" font-size="13" font-weight="bold" fill="#1f5f6a" text-anchor="middle">final/</text>
+  <text x="795" y="378" font-size="11" fill="#1f5f6a" text-anchor="middle">boss-approved</text>
+  <line x1="240" y1="362" x2="306" y2="362" stroke="#4a7c3f" stroke-width="3" marker-end="url(#arrow3)"/>
+  <line x1="460" y1="362" x2="526" y2="362" stroke="#4a7c3f" stroke-width="3" marker-end="url(#arrow3)"/>
+  <line x1="680" y1="362" x2="736" y2="362" stroke="#4a7c3f" stroke-width="3" marker-end="url(#arrow3)"/>
+  <path d="M 165 330 C 150 300, 470 300, 480 330" fill="none" stroke="#8a7554" stroke-width="2" stroke-dasharray="5,4" marker-end="url(#arrow3)"/>
+  <text x="330" y="312" font-size="11" fill="#8a7554" text-anchor="middle">if bounced: fix, next pass</text>
+  <text x="450" y="450" font-size="13" font-weight="bold" fill="#4a7c3f" text-anchor="middle">Two reasonable sides stuck in a loop? The fix is rarely a smarter paragraph.</text>
+  <text x="450" y="472" font-size="13" fill="#5a4a3a" text-anchor="middle">It is usually the missing fact file. Ground truth first, ping-pong never.</text>
+  <defs>
+    <marker id="arrow3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#5a4a3a"/>
+    </marker>
+  </defs>
+</svg>
